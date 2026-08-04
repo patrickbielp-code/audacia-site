@@ -1,0 +1,388 @@
+
+
+@font-face {
+  font-family: 'Plus Jakarta Sans';
+  src: url('assets/fontes/plus-jakarta-sans-latin.woff2') format('woff2');
+  font-weight: 200 800;
+  font-style: normal;
+  font-display: swap;
+}
+
+:root {
+
+  --marca-preto:        #101113;
+  --marca-preto-forte:  #000000;
+  --marca-amarelo:      #ffc200;
+  --marca-branco:       #ffffff;
+  --marca-cinza:        #383838;
+  --marca-cinza-dagua:  #282829;
+
+  --amarelo-fundo-1:    #e6af00;
+  --amarelo-fundo-2:    #c99700;
+
+  --preto-elevado-1:    #16181b;
+  --preto-elevado-2:    #1c2025;
+  --cinza-grafismo:     #24272c;
+  --cinza-grafismo-2:   #1b1e22;
+  --cinza-grafismo-3:   #141619;
+  --cinza-borda-1:      #2a2d30;
+  --cinza-borda-2:      #3a3d42;
+
+  --branco-70:          rgba(255, 255, 255, 0.70);
+  --branco-48:          rgba(255, 255, 255, 0.48);
+  --preto-68:           rgba(16, 17, 19, 0.68);
+  --preto-62:           rgba(16, 17, 19, 0.62);
+
+  --vermelho-escuro-ctx:  #ff6a55;
+  --vermelho-claro-ctx:   #b3261e;
+  --vermelho-acento-ctx:  #7f1408;
+  --vermelho-cinza-ctx:   #ff8d7c;
+  --verde-escuro-ctx:     #35c479;
+  --verde-claro-ctx:      #157f3f;
+  --verde-acento-ctx:     #0d4f2b;
+  --verde-cinza-ctx:      #6fd39b;
+
+  --escala-1: 0.25rem;
+  --escala-2: 0.5rem;
+  --escala-3: 0.75rem;
+  --escala-4: 1rem;
+  --escala-6: 1.5rem;
+  --escala-8: 2rem;
+  --escala-12: 3rem;
+  --escala-16: 4rem;
+  --escala-24: 6rem;
+  --escala-32: 8rem;
+
+  --fonte-titulo: 'Owners', 'Plus Jakarta Sans', system-ui, sans-serif;
+  --fonte-texto:  'Owners', 'Plus Jakarta Sans', system-ui, sans-serif;
+
+  --tipo-manifesto: clamp(3.25rem, 0.5rem + 13vw, 12.5rem);
+  --tipo-display:   clamp(2.75rem, 1.1rem + 6.8vw, 7rem);
+  --tipo-h1:        clamp(2.25rem, 1.4rem + 3.8vw, 4.75rem);
+  --tipo-h2:        clamp(1.75rem, 1.3rem + 1.9vw, 3rem);
+  --tipo-h3:        clamp(1.375rem, 1.2rem + 0.9vw, 2rem);
+  --tipo-destaque:  clamp(1.125rem, 1.05rem + 0.35vw, 1.375rem);
+  --tipo-corpo:     1.0625rem;
+  --tipo-detalhe:   0.875rem;
+  --tipo-rotulo:    0.8125rem;
+
+  --altura-manifesto: 0.92;
+  --altura-titulo:    1.05;
+  --altura-subtitulo: 1.2;
+  --altura-corpo:     1.6;
+
+  --tracking-manifesto: -0.035em;
+  --tracking-titulo:    -0.02em;
+  --tracking-rotulo:     0.1em;
+
+  --peso-regular: 400;
+  --peso-medio:   500;
+  --peso-negrito: 700;
+  --peso-black:   800;
+
+  --esp-secao:   clamp(6rem, 4rem + 8vw, 10rem);
+  --esp-bloco:   clamp(3rem, 2rem + 4vw, 5rem);
+  --esp-grupo:   var(--escala-8);
+  --esp-item:    var(--escala-4);
+  --esp-micro:   var(--escala-2);
+
+  --container:        1200px;
+  --container-largo:  1400px;
+  --container-texto:  42rem;
+  --margem-pagina:    clamp(1.25rem, 4vw, 3rem);
+
+  --raio-s:      0.5rem;
+  --raio-m:      1rem;
+  --raio-l:      1.5rem;
+  --raio-pilula: 999px;
+
+  --sombra-1: 0 1px 2px rgba(0, 0, 0, 0.45), 0 4px 14px rgba(0, 0, 0, 0.35);
+  --sombra-2: 0 12px 32px rgba(0, 0, 0, 0.55);
+  --sombra-brilho: 0 0 0 1px var(--marca-amarelo), 0 0 32px rgba(255, 194, 0, 0.25);
+
+  --dur-utilidade: 140ms;
+  --dur-conteudo:  400ms;
+  --dur-cena:      750ms;
+  --ease-confiante: cubic-bezier(0.16, 1, 0.3, 1);
+  --ease-suave:     cubic-bezier(0.65, 0, 0.35, 1);
+  --ease-cena:      cubic-bezier(0.22, 1, 0.36, 1);
+  --foco-blur: 10px;
+
+  --img-aspecto-larga: 16 / 9;
+  --img-aspecto-card:  4 / 3;
+  --raio-img: var(--raio-m);
+
+  --cor-acento: var(--marca-amarelo);
+
+  --cor-fundo:          var(--marca-preto-forte);
+  --cor-fundo-elevada:  var(--preto-elevado-1);
+  --cor-texto:          var(--marca-branco);
+  --cor-texto-2:        var(--branco-70);
+  --cor-texto-3:        var(--branco-48);
+  --cor-acento-texto:   var(--marca-amarelo);
+  --cor-sobre-acento:   var(--marca-preto);
+  --cor-sobre-foto:     var(--marca-branco);
+  --cor-borda:          var(--cinza-borda-1);
+  --cor-borda-forte:    var(--cinza-borda-2);
+  --cor-foco:           var(--marca-amarelo);
+  --foco-halo:          none;
+  --cor-erro:           var(--vermelho-escuro-ctx);
+  --cor-sucesso:        var(--verde-escuro-ctx);
+  --scrim:              linear-gradient(180deg, rgba(16, 17, 19, 0) 0%, rgba(16, 17, 19, 0) 100%);
+  --scrim-lateral:      linear-gradient(90deg, rgba(16, 17, 19, 0) 0%, rgba(16, 17, 19, 0) 100%);
+  --grafismo-tinta:     var(--cinza-grafismo);
+  --hairline:           rgba(255, 255, 255, 0.14);
+
+  --botao-primario-fundo:       var(--marca-amarelo);
+  --botao-primario-fundo-hover: var(--amarelo-fundo-1);
+  --botao-primario-fundo-ativo: var(--amarelo-fundo-2);
+  --botao-primario-texto:       var(--marca-preto);
+  --botao-secundario-texto:     var(--marca-branco);
+  --botao-secundario-borda:     rgba(255, 255, 255, 0.45);
+  --botao-secundario-fundo-hover: rgba(255, 255, 255, 0.08);
+  --card-fundo:   var(--preto-elevado-1);
+  --card-borda:   var(--cinza-borda-1);
+  --card-sombra:  var(--sombra-1);
+  --campo-fundo:        rgba(255, 255, 255, 0.05);
+  --campo-borda:        var(--cinza-borda-2);
+  --campo-texto:        var(--marca-branco);
+  --campo-placeholder:  var(--branco-48);
+}
+
+.contexto-escuro {
+  --cor-fundo:          var(--marca-preto-forte);
+  --cor-fundo-elevada:  var(--preto-elevado-1);
+  --cor-texto:          var(--marca-branco);
+  --cor-texto-2:        var(--branco-70);
+  --cor-texto-3:        var(--branco-48);
+  --cor-acento-texto:   var(--marca-amarelo);
+  --cor-sobre-acento:   var(--marca-preto);
+  --cor-sobre-foto:     var(--marca-branco);
+  --cor-borda:          var(--cinza-borda-1);
+  --cor-borda-forte:    var(--cinza-borda-2);
+  --cor-foco:           var(--marca-amarelo);
+  --foco-halo:          none;
+  --cor-erro:           var(--vermelho-escuro-ctx);
+  --cor-sucesso:        var(--verde-escuro-ctx);
+  --scrim:              linear-gradient(180deg, rgba(16, 17, 19, 0) 0%, rgba(16, 17, 19, 0) 100%);
+  --scrim-lateral:      linear-gradient(90deg, rgba(16, 17, 19, 0) 0%, rgba(16, 17, 19, 0) 100%);
+  --grafismo-tinta:     var(--cinza-grafismo);
+  --hairline:           rgba(255, 255, 255, 0.14);
+  --botao-primario-fundo:       var(--marca-amarelo);
+  --botao-primario-fundo-hover: var(--amarelo-fundo-1);
+  --botao-primario-fundo-ativo: var(--amarelo-fundo-2);
+  --botao-primario-texto:       var(--marca-preto);
+  --botao-secundario-texto:     var(--marca-branco);
+  --botao-secundario-borda:     rgba(255, 255, 255, 0.45);
+  --botao-secundario-fundo-hover: rgba(255, 255, 255, 0.08);
+  --card-fundo:   var(--preto-elevado-1);
+  --card-borda:   var(--cinza-borda-1);
+  --card-sombra:  var(--sombra-1);
+  --campo-fundo:        rgba(255, 255, 255, 0.05);
+  --campo-borda:        var(--cinza-borda-2);
+  --campo-texto:        var(--marca-branco);
+  --campo-placeholder:  var(--branco-48);
+}
+
+.contexto-claro {
+  --cor-fundo:          var(--marca-branco);
+  --cor-fundo-elevada:  #f6f6f7;
+  --cor-texto:          var(--marca-preto);
+  --cor-texto-2:        var(--preto-68);
+  --cor-texto-3:        var(--preto-62);
+  --cor-acento-texto:   var(--marca-preto);
+  --cor-sobre-acento:   var(--marca-preto);
+  --cor-sobre-foto:     var(--marca-branco);
+  --cor-borda:          #e1e2e4;
+  --cor-borda-forte:    #c8c9cc;
+  --cor-foco:           var(--marca-preto);
+  --foco-halo:          none;
+  --cor-erro:           var(--vermelho-claro-ctx);
+  --cor-sucesso:        var(--verde-claro-ctx);
+  --scrim:              linear-gradient(180deg, rgba(16, 17, 19, 0) 0%, rgba(16, 17, 19, 0) 100%);
+  --scrim-lateral:      linear-gradient(90deg, rgba(16, 17, 19, 0) 0%, rgba(16, 17, 19, 0) 100%);
+  --grafismo-tinta:     rgba(16, 17, 19, 0.08);
+  --hairline:           rgba(16, 17, 19, 0.14);
+  --botao-primario-fundo:       var(--marca-amarelo);
+  --botao-primario-fundo-hover: var(--amarelo-fundo-1);
+  --botao-primario-fundo-ativo: var(--amarelo-fundo-2);
+  --botao-primario-texto:       var(--marca-preto);
+  --botao-secundario-texto:     var(--marca-preto);
+  --botao-secundario-borda:     rgba(16, 17, 19, 0.45);
+  --botao-secundario-fundo-hover: rgba(16, 17, 19, 0.06);
+  --card-fundo:   var(--marca-branco);
+  --card-borda:   #e1e2e4;
+  --card-sombra:  0 1px 2px rgba(16, 17, 19, 0.06), 0 8px 24px rgba(16, 17, 19, 0.08);
+  --campo-fundo:        var(--marca-branco);
+  --campo-borda:        #c8c9cc;
+  --campo-texto:        var(--marca-preto);
+  --campo-placeholder:  var(--preto-62);
+}
+
+.contexto-acento {
+  --cor-fundo:          var(--marca-amarelo);
+  --cor-fundo-elevada:  #f2b800;
+  --cor-texto:          var(--marca-preto);
+  --cor-texto-2:        rgba(16, 17, 19, 0.78);
+  --cor-texto-3:        rgba(16, 17, 19, 0.64);
+  --cor-acento-texto:   var(--marca-preto);
+  --cor-sobre-acento:   var(--marca-amarelo);
+  --cor-sobre-foto:     var(--marca-branco);
+  --cor-borda:          rgba(16, 17, 19, 0.25);
+  --cor-borda-forte:    rgba(16, 17, 19, 0.45);
+  --cor-foco:           var(--marca-preto);
+  --foco-halo:          none;
+  --cor-erro:           var(--vermelho-acento-ctx);
+  --cor-sucesso:        var(--verde-acento-ctx);
+  --scrim:              linear-gradient(180deg, rgba(16, 17, 19, 0) 0%, rgba(16, 17, 19, 0) 100%);
+  --scrim-lateral:      linear-gradient(90deg, rgba(16, 17, 19, 0) 0%, rgba(16, 17, 19, 0) 100%);
+  --grafismo-tinta:     rgba(16, 17, 19, 0.12);
+  --hairline:           rgba(16, 17, 19, 0.22);
+  --botao-primario-fundo:       var(--marca-preto);
+  --botao-primario-fundo-hover: var(--cinza-borda-1);
+  --botao-primario-fundo-ativo: var(--preto-elevado-1);
+  --botao-primario-texto:       var(--marca-amarelo);
+  --botao-secundario-texto:     var(--marca-preto);
+  --botao-secundario-borda:     rgba(16, 17, 19, 0.55);
+  --botao-secundario-fundo-hover: rgba(16, 17, 19, 0.08);
+  --card-fundo:   var(--marca-branco);
+  --card-borda:   rgba(16, 17, 19, 0.2);
+  --card-sombra:  0 8px 24px rgba(16, 17, 19, 0.18);
+  --campo-fundo:        var(--marca-branco);
+  --campo-borda:        rgba(16, 17, 19, 0.45);
+  --campo-texto:        var(--marca-preto);
+  --campo-placeholder:  var(--preto-62);
+}
+
+.contexto-cinza {
+  --cor-fundo:          var(--marca-cinza);
+  --cor-fundo-elevada:  #414141;
+  --cor-texto:          var(--marca-branco);
+  --cor-texto-2:        rgba(255, 255, 255, 0.8);
+  --cor-texto-3:        rgba(255, 255, 255, 0.62);
+  --cor-acento-texto:   var(--marca-amarelo);
+  --cor-sobre-acento:   var(--marca-preto);
+  --cor-sobre-foto:     var(--marca-branco);
+  --cor-borda:          rgba(255, 255, 255, 0.16);
+  --cor-borda-forte:    rgba(255, 255, 255, 0.35);
+  --cor-foco:           var(--marca-amarelo);
+  --foco-halo:          none;
+  --cor-erro:           var(--vermelho-cinza-ctx);
+  --cor-sucesso:        var(--verde-cinza-ctx);
+  --scrim:              linear-gradient(180deg, rgba(16, 17, 19, 0) 0%, rgba(16, 17, 19, 0) 100%);
+  --scrim-lateral:      linear-gradient(90deg, rgba(16, 17, 19, 0) 0%, rgba(16, 17, 19, 0) 100%);
+  --grafismo-tinta:     rgba(255, 255, 255, 0.07);
+  --hairline:           rgba(255, 255, 255, 0.18);
+  --botao-primario-fundo:       var(--marca-amarelo);
+  --botao-primario-fundo-hover: var(--amarelo-fundo-1);
+  --botao-primario-fundo-ativo: var(--amarelo-fundo-2);
+  --botao-primario-texto:       var(--marca-preto);
+  --botao-secundario-texto:     var(--marca-branco);
+  --botao-secundario-borda:     rgba(255, 255, 255, 0.5);
+  --botao-secundario-fundo-hover: rgba(255, 255, 255, 0.08);
+  --card-fundo:   #303030;
+  --card-borda:   rgba(255, 255, 255, 0.14);
+  --card-sombra:  var(--sombra-1);
+  --campo-fundo:        rgba(255, 255, 255, 0.06);
+  --campo-borda:        rgba(255, 255, 255, 0.35);
+  --campo-texto:        var(--marca-branco);
+  --campo-placeholder:  rgba(255, 255, 255, 0.62);
+}
+
+.contexto-foto {
+  --cor-fundo:          var(--marca-preto);
+  --cor-fundo-elevada:  rgba(16, 17, 19, 0.78);
+  --cor-texto:          var(--marca-branco);
+  --cor-texto-2:        rgba(255, 255, 255, 0.78);
+  --cor-texto-3:        rgba(255, 255, 255, 0.6);
+  --cor-acento-texto:   var(--marca-amarelo);
+  --cor-sobre-acento:   var(--marca-preto);
+  --cor-sobre-foto:     var(--marca-branco);
+  --cor-borda:          rgba(255, 255, 255, 0.28);
+  --cor-borda-forte:    rgba(255, 255, 255, 0.5);
+  --cor-foco:           var(--marca-amarelo);
+  --foco-halo:          0 0 0 5px rgba(16, 17, 19, 0.8);
+  --cor-erro:           var(--vermelho-cinza-ctx);
+  --cor-sucesso:        var(--verde-cinza-ctx);
+  --scrim:              linear-gradient(180deg, rgba(16, 17, 19, 0.55) 0%, rgba(16, 17, 19, 0.72) 55%, rgba(16, 17, 19, 0.9) 100%);
+  --scrim-lateral:      linear-gradient(90deg, rgba(16, 17, 19, 0.92) 0%, rgba(16, 17, 19, 0.45) 55%, rgba(16, 17, 19, 0.08) 100%);
+  --grafismo-tinta:     rgba(255, 255, 255, 0.07);
+  --hairline:           rgba(255, 255, 255, 0.2);
+  --botao-primario-fundo:       var(--marca-amarelo);
+  --botao-primario-fundo-hover: var(--amarelo-fundo-1);
+  --botao-primario-fundo-ativo: var(--amarelo-fundo-2);
+  --botao-primario-texto:       var(--marca-preto);
+  --botao-secundario-texto:     var(--marca-branco);
+  --botao-secundario-borda:     rgba(255, 255, 255, 0.65);
+  --botao-secundario-fundo-hover: rgba(16, 17, 19, 0.45);
+  --card-fundo:   rgba(16, 17, 19, 0.78);
+  --card-borda:   rgba(255, 255, 255, 0.22);
+  --card-sombra:  var(--sombra-2);
+  --campo-fundo:        rgba(16, 17, 19, 0.6);
+  --campo-borda:        rgba(255, 255, 255, 0.5);
+  --campo-texto:        var(--marca-branco);
+  --campo-placeholder:  rgba(255, 255, 255, 0.6);
+}
+
+*, *::before, *::after { box-sizing: border-box; }
+
+html {
+  -webkit-font-smoothing: antialiased;
+  text-rendering: optimizeLegibility;
+}
+
+body {
+  margin: 0;
+  background: var(--cor-fundo);
+  color: var(--cor-texto);
+  font-family: var(--fonte-texto);
+  font-size: var(--tipo-corpo);
+  line-height: var(--altura-corpo);
+  font-weight: var(--peso-regular);
+}
+
+.contexto-escuro,
+.contexto-claro,
+.contexto-acento,
+.contexto-cinza,
+.contexto-foto {
+  background-color: var(--cor-fundo);
+  color: var(--cor-texto);
+}
+
+.contexto-foto {
+  position: relative;
+  background-size: cover;
+  background-position: center;
+}
+.contexto-foto::before {
+  content: "";
+  position: absolute;
+  inset: 0;
+  background: var(--scrim);
+  pointer-events: none;
+}
+.contexto-foto > * { position: relative; }
+
+::selection { background: var(--marca-amarelo); color: var(--marca-preto); }
+
+:focus-visible {
+  outline: 3px solid var(--cor-foco);
+  outline-offset: 2px;
+  box-shadow: var(--foco-halo);
+}
+
+@media (prefers-reduced-motion: reduce) {
+  :root {
+    --dur-utilidade: 1ms;
+    --dur-conteudo: 1ms;
+    --dur-cena: 1ms;
+    --foco-blur: 0px;
+  }
+  *, *::before, *::after {
+    animation-duration: 1ms !important;
+    animation-iteration-count: 1 !important;
+    transition-duration: 1ms !important;
+    scroll-behavior: auto !important;
+  }
+}
