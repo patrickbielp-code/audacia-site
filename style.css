@@ -125,7 +125,7 @@
 
 .grafismo-dither--hero {
   background-position: center 38%;
-  background-size: min(140vw, 30rem);
+  background-size: min(180vw, 40rem);
 }
 @media (min-width: 900px) {
   .grafismo-dither--hero {
@@ -454,7 +454,7 @@
   .manchete .unidade { font-size: var(--tipo-h3); }
   .quadro--4 .manchete .unidade { font-size: calc(100cqw / 11); }
 
-  .quadro .campo-secao { background-size: min(150vw, 26rem); opacity: 0.55; }
+  .quadro .campo-secao { background-size: min(230vw, 46rem); }
 }
 
 .secao--fazemos .cabecalho {
@@ -799,7 +799,8 @@
 
 @media (max-width: 700px) {
   .secao--formulario .campo-secao {
-    background-size: min(90vw, 18rem);
+
+    background-size: min(160vw, 32rem);
     background-position: right -20% top -6%;
   }
 }
@@ -874,6 +875,8 @@
   .secao--rodape .campo-secao {
     mask-image: linear-gradient(to bottom, currentColor 0%, currentColor 11%, transparent 19%);
     -webkit-mask-image: linear-gradient(to bottom, currentColor 0%, currentColor 11%, transparent 19%);
+
+    background-size: 210% auto;
   }
 
   .rodape-colunas > :not(nav) { order: -1; }
