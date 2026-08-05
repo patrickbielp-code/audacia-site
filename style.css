@@ -192,6 +192,18 @@
 }
 .menu-lista a:hover { color: var(--cor-acento-texto); }
 
+@media (max-width: 700px) {
+  .menu-lista { gap: 0; }
+  .menu-lista a { display: block; padding: calc(var(--esp-item) * 0.6875) 0; }
+  .menu > summary { padding: var(--esp-item) 0; margin: calc(var(--esp-item) * -1) 0; }
+  .rodape-coluna a,
+  .contato-acao { display: block; padding: calc(var(--esp-item) * 0.75) 0; }
+  .rodape-coluna { gap: 0; }
+
+  nav.rodape-coluna { grid-template-columns: 1fr 1fr; column-gap: var(--esp-item); }
+  nav.rodape-coluna .rodape-coluna-titulo { grid-column: 1 / -1; }
+}
+
 @media (max-width: 899px) {
   .miolo { transition: opacity var(--dur-conteudo) var(--ease-confiante); }
   .palco:has(.menu[open]) .miolo { opacity: 0.16; }
@@ -425,11 +437,24 @@
 }
 
 @media (max-width: 700px) {
-  .quadro { flex-basis: 90vw; min-height: auto; padding: var(--esp-bloco) var(--esp-item); }
+  html { scroll-snap-type: y proximity; }
+
+  .quadro {
+    flex-basis: auto;
+    min-height: 100svh;
+    scroll-snap-align: center;
+
+    scroll-snap-stop: always;
+    padding: var(--esp-bloco) var(--esp-item);
+  }
+
+  .quadro--abertura { flex-basis: auto; min-height: auto; scroll-snap-align: none; }
+
   .manchete .cifra { font-size: calc(100cqw / 6.4); }
   .manchete .unidade { font-size: var(--tipo-h3); }
   .quadro--4 .manchete .unidade { font-size: calc(100cqw / 11); }
-  .quadro .campo-secao { background-size: min(150vw, 26rem); }
+
+  .quadro .campo-secao { background-size: min(150vw, 26rem); opacity: 0.55; }
 }
 
 .secao--fazemos .cabecalho {
@@ -466,6 +491,20 @@
   grid-template-rows: 1fr;
   align-content: center;
   padding: clamp(1.75rem, 2.4vw, 2.5rem);
+}
+
+@media (max-width: 679px) {
+  .celula {
+    grid-template-columns: auto 1fr;
+    grid-template-rows: auto;
+    align-items: start;
+    gap: var(--esp-item);
+    min-height: 0;
+  }
+
+  .celula > span:empty { display: none; }
+  .celula--ancora { grid-template-columns: 1fr; }
+  .icone { width: var(--escala-8); }
 }
 
 .texto-celula {
@@ -822,6 +861,32 @@
   min-width: 11rem;
 }
 
+@media (max-width: 700px) {
+  .rodape-topo {
+    justify-items: start;
+    text-align: left;
+    gap: var(--esp-bloco);
+  }
+  .marca-gigante { width: min(20rem, 58%); }
+  .rodape-colunas { gap: var(--esp-bloco); }
+  .rodape-coluna { min-width: 0; justify-self: stretch; }
+
+  .secao--rodape .campo-secao {
+    mask-image: linear-gradient(to bottom, currentColor 0%, currentColor 11%, transparent 19%);
+    -webkit-mask-image: linear-gradient(to bottom, currentColor 0%, currentColor 11%, transparent 19%);
+  }
+
+  .rodape-colunas > :not(nav) { order: -1; }
+
+  .rodape-coluna .contato-acao {
+    font-size: var(--tipo-destaque);
+    letter-spacing: var(--tracking-titulo);
+    text-transform: none;
+    padding-bottom: var(--esp-item);
+  }
+  .rodape-coluna .contato-acao::after { content: " \2192"; }
+}
+
 .rodape-coluna-titulo {
   margin: 0 0 var(--esp-item);
   padding-bottom: var(--esp-item);
@@ -847,8 +912,8 @@
 }
 .rodape-coluna a:hover { color: var(--cor-texto); }
 
-.contato-acao { color: var(--cor-texto); }
-.contato-acao:hover { color: var(--cor-acento-texto); }
+.rodape-coluna .contato-acao { color: var(--cor-texto); }
+.rodape-coluna .contato-acao:hover { color: var(--cor-acento-texto); }
 
 .contato {
   display: grid;
@@ -1008,7 +1073,7 @@
 .js-motion .campo-secao:not(.entrou) { opacity: 0; }
 
 @supports (animation-timeline: view()) {
-  @media (prefers-reduced-motion: no-preference) and (min-width: 700px) {
+  @media (prefers-reduced-motion: no-preference) {
     .secao--formulario > .campo-secao,
     .secao--rodape > .campo-secao,
     .palco > .grafismo-dither--hero {
@@ -1020,12 +1085,21 @@
       animation-timeline: view();
       animation-range: entry 0% exit 100%;
     }
+    @media (max-width: 700px) {
+      .secao--formulario > .campo-secao,
+      .secao--rodape > .campo-secao,
+      .palco > .grafismo-dither--hero { animation-name: deriva-curta; }
+    }
   }
 }
 
 @keyframes deriva {
   from { transform: translate3d(0, 24px, 0); }
   to   { transform: translate3d(0, -24px, 0); }
+}
+@keyframes deriva-curta {
+  from { transform: translate3d(0, 12px, 0); }
+  to   { transform: translate3d(0, -12px, 0); }
 }
 
 .tela-grafismo {
@@ -1034,6 +1108,8 @@
   width: 100%;
   height: 100%;
   pointer-events: none;
+
+  image-rendering: pixelated;
 }
 
 .grafismo-dither.grafismo-vivo { background-image: none; }
@@ -1041,4 +1117,162 @@
 @media (prefers-reduced-motion: reduce) {
   .js-motion .entra:not(.entrou),
   .js-motion .campo-secao:not(.entrou) { opacity: 1; transform: none; }
+}
+
+.fio { display: none; }
+
+@supports (animation-timeline: view()) {
+
+  @media (prefers-reduced-motion: no-preference) and (min-width: 1024px) {
+    .fio {
+      display: block;
+      position: absolute;
+
+      left: max(calc(var(--margem-pagina) / 2 - 3px), calc(50% - var(--container) / 2 - 3.25rem));
+      top: 0;
+      bottom: 0;
+      width: 5px;
+      z-index: 0;
+      pointer-events: none;
+    }
+
+    .fio-haste {
+      position: absolute;
+      inset: 0;
+
+      overflow: clip;
+      background-image: repeating-linear-gradient(
+        to bottom,
+        currentColor 0 5px,
+        transparent 5px 15px);
+      color: var(--cor-texto-3);
+      opacity: 0.30;
+    }
+
+    .fio-haste::after {
+      content: "";
+      position: absolute;
+      inset: 0;
+      background: var(--cor-fundo);
+      transform-origin: 50% 100%;
+      animation-name: fio-revela;
+      animation-duration: auto;
+      animation-timing-function: linear;
+      animation-fill-mode: both;
+      animation-timeline: view();
+      animation-range: cover 8% cover 86%;
+    }
+
+    .fio-carro {
+      position: absolute;
+      inset: 0;
+      animation-name: fio-desce;
+      animation-duration: auto;
+      animation-timing-function: linear;
+      animation-fill-mode: both;
+      animation-timeline: view();
+      animation-range: cover 8% cover 86%;
+    }
+    .fio-carro::before {
+      content: "";
+      position: absolute;
+      left: -2px;
+      top: -9px;
+      width: 9px;
+      height: 9px;
+      background: var(--cor-acento-texto);
+
+      animation: fio-pulso 2.8s var(--ease-suave) infinite;
+    }
+
+    .fio-carro::after {
+      content: "";
+      position: absolute;
+      left: 0;
+      top: -54px;
+      width: 5px;
+      height: 45px;
+      background-image: repeating-linear-gradient(
+        to bottom, var(--cor-acento-texto) 0 5px, transparent 5px 15px);
+      opacity: 0.5;
+      mask-image: linear-gradient(to bottom, transparent, currentColor);
+      -webkit-mask-image: linear-gradient(to bottom, transparent, currentColor);
+    }
+
+    .palco .fio-haste::after,
+    .palco .fio-carro { animation-range: exit 0% exit 94%; }
+
+    .fio-num {
+      position: absolute;
+      top: calc(var(--esp-secao) * 0.72);
+      left: 0;
+      font-size: var(--tipo-rotulo);
+      font-weight: var(--peso-negrito);
+      letter-spacing: var(--tracking-rotulo);
+      font-variant-numeric: tabular-nums;
+      color: var(--cor-texto-3);
+      background: var(--cor-fundo);
+      padding: var(--esp-micro) 0;
+      transform: translateX(-50%) translateY(8px);
+      animation-name: fio-marca;
+      animation-duration: auto;
+      animation-timing-function: var(--ease-confiante);
+      animation-fill-mode: both;
+      animation-timeline: view();
+      animation-range: entry 30% entry 90%;
+    }
+
+  }
+}
+
+@keyframes fio-revela {
+  from { transform: scaleY(1); }
+  to   { transform: scaleY(0); }
+}
+@keyframes fio-desce {
+  from { transform: translate3d(0, 0, 0); }
+  to   { transform: translate3d(0, 100%, 0); }
+}
+@keyframes fio-marca {
+  from { opacity: 0; transform: translateX(-50%) translateY(8px); }
+  to   { opacity: 1; transform: translateX(-50%) translateY(0); }
+}
+@keyframes fio-pulso {
+  0%, 100% { transform: scale(1); opacity: 1; }
+  50%      { transform: scale(0.62); opacity: 0.72; }
+}
+
+@supports (animation-timeline: view()) {
+
+  @media (prefers-reduced-motion: no-preference) {
+
+    .foco-palavra {
+      display: inline-block;
+      animation-duration: auto;
+      animation-timing-function: linear;
+      animation-fill-mode: both;
+      animation-timeline: view();
+    }
+
+    .foco--acende .foco-palavra { animation-name: palavra-acende; }
+
+    .foco--sai .foco-palavra { animation-name: palavra-sai; }
+
+    @media (max-width: 700px) {
+      .foco--sai .foco-palavra { animation-name: palavra-sai-limpa; }
+    }
+  }
+}
+
+@keyframes palavra-acende {
+  from { opacity: 0.16; }
+  to   { opacity: 1; }
+}
+@keyframes palavra-sai {
+  from { opacity: 1; filter: blur(0); transform: translate3d(0, 0, 0); }
+  to   { opacity: 0.06; filter: blur(7px); transform: translate3d(0, -14px, 0); }
+}
+@keyframes palavra-sai-limpa {
+  from { opacity: 1; transform: translate3d(0, 0, 0); }
+  to   { opacity: 0.06; transform: translate3d(0, -14px, 0); }
 }

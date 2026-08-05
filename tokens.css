@@ -372,6 +372,13 @@ body {
   box-shadow: var(--foco-halo);
 }
 
+@media (max-width: 700px) {
+  :root {
+    --esp-secao: 4.5rem;
+    --esp-bloco: 2.5rem;
+  }
+}
+
 @media (prefers-reduced-motion: reduce) {
   :root {
     --dur-utilidade: 1ms;
