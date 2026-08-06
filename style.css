@@ -533,24 +533,6 @@
   stroke-dasharray: 0 5;
 }
 
-.pendencia {
-  margin: var(--esp-bloco) 0 0;
-  padding-left: var(--esp-item);
-  border-left: 1px solid var(--cor-borda-forte);
-  font-size: var(--tipo-detalhe);
-  line-height: var(--altura-corpo);
-  color: var(--cor-texto-3);
-  max-width: var(--container-texto);
-}
-.pendencia b {
-  display: block;
-  font-size: var(--tipo-rotulo);
-  font-weight: var(--peso-negrito);
-  letter-spacing: var(--tracking-rotulo);
-  text-transform: uppercase;
-  margin-bottom: var(--esp-micro);
-}
-
 .secao--perguntas .abertura {
   margin-bottom: var(--esp-bloco);
   max-width: 18ch;
@@ -1162,7 +1144,7 @@
       animation-duration: auto;
       animation-timing-function: linear;
       animation-fill-mode: both;
-      animation-timeline: view();
+      animation-timeline: view(block auto 50%);
       animation-range: cover 8% cover 86%;
     }
 
@@ -1173,7 +1155,7 @@
       animation-duration: auto;
       animation-timing-function: linear;
       animation-fill-mode: both;
-      animation-timeline: view();
+      animation-timeline: view(block auto 50%);
       animation-range: cover 8% cover 86%;
     }
     .fio-carro::before {
@@ -1203,7 +1185,10 @@
     }
 
     .palco .fio-haste::after,
-    .palco .fio-carro { animation-range: exit 0% exit 94%; }
+    .palco .fio-carro {
+      animation-timeline: view();
+      animation-range: exit 0% exit 94%;
+    }
 
     .fio-num {
       position: absolute;
@@ -1221,7 +1206,7 @@
       animation-duration: auto;
       animation-timing-function: var(--ease-confiante);
       animation-fill-mode: both;
-      animation-timeline: view();
+      animation-timeline: view(block auto 50%);
       animation-range: entry 30% entry 90%;
     }
 
