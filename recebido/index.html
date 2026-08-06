@@ -1,0 +1,178 @@
+<!doctype html>
+<html lang="pt-BR">
+<head>
+<meta charset="utf-8">
+<meta name="viewport" content="width=device-width, initial-scale=1">
+<title>Recebido · Audácia</title>
+
+<meta name="robots" content="noindex, nofollow">
+
+<link rel="icon" href="../assets/marca/icone.png">
+<link rel="stylesheet" href="../tokens.css">
+<link rel="stylesheet" href="../componentes.css">
+<link rel="stylesheet" href="../style.css">
+
+<style>
+/* a página ocupa a tela inteira e ancora o conteúdo no meio: é uma tela só,
+   sem rolagem obrigatória no desktop */
+/* UMA TELA SÓ, e isso é medido e não estimado. A primeira versão vazava 233px
+   no 1440 e 402px no 1280x720, e o que ficava embaixo da dobra era justamente
+   o pé: a nota de privacidade e a volta pro site. Página de confirmação que
+   esconde a saída deixa a pessoa sem próximo passo depois de ter dado o dela.
+   O excesso era somado de três lugares (respiro da página + respiro do miolo +
+   dois vãos de grade, todos em --esp-bloco); o miolo perdeu o dele e os vãos
+   caíram pra --esp-item, porque a linha 1fr já centraliza sozinha. */
+.recebido {
+  min-height: 100svh;
+  display: grid;
+  grid-template-rows: auto 1fr auto;
+  gap: var(--esp-item);
+  padding: var(--esp-grupo) var(--margem-pagina);
+  position: relative;
+  overflow: clip;
+}
+.recebido > * { position: relative; z-index: 1; }
+
+/* o campo de pontos entra pela direita e é cortado pela borda, como em toda
+   seção da home. Fica FORA da medida do texto: campo de pontos não passa por
+   trás de texto corrido (régua do passe de tinta de 05/08). */
+.recebido-campo {
+  position: absolute;
+  inset: 0;
+  z-index: 0;
+  background-repeat: no-repeat;
+  background-position: right -12% center;
+  background-size: min(70vw, 40rem);
+  opacity: 0.9;
+}
+
+.recebido-topo { max-width: var(--container); margin: 0 auto; width: 100%; }
+.recebido-miolo {
+  max-width: var(--container);
+  margin: 0 auto;
+  width: 100%;
+  align-self: center;
+  padding: var(--esp-item) 0;
+}
+.recebido-pe {
+  max-width: var(--container);
+  margin: 0 auto;
+  width: 100%;
+  display: flex;
+  gap: var(--esp-item) var(--esp-grupo);
+  align-items: baseline;
+  justify-content: space-between;
+  flex-wrap: wrap;
+}
+
+.recebido-titulo {
+  margin: var(--esp-item) 0 0;
+  max-width: 16ch;
+  font-size: var(--tipo-h1);
+  font-weight: var(--peso-black);
+  line-height: var(--altura-titulo);
+  letter-spacing: var(--tracking-titulo);
+  color: var(--cor-texto);
+  text-wrap: balance;
+}
+.recebido-descritor {
+  margin: var(--esp-item) 0 0;
+  max-width: var(--container-texto);
+  font-size: var(--tipo-destaque);
+  line-height: var(--altura-corpo);
+  color: var(--cor-texto-2);
+  text-wrap: pretty;
+}
+
+/* OS TRÊS PASSOS reusam a numeração dot-matrix com filete pontilhado que a S7
+   trouxe da ICOMAT, e é o mesmo desenho do índice das etapas: quem acabou de
+   percorrer 01 02 03 preenchendo reconhece o 01 02 03 do que vem agora. */
+.passos-depois {
+  list-style: none;
+  margin: var(--esp-grupo) 0 0;
+  padding: 0;
+  display: grid;
+  gap: 0;
+  max-width: var(--container-texto);
+}
+.passos-depois li {
+  display: grid;
+  grid-template-columns: 3.5rem minmax(0, 1fr);
+  gap: var(--esp-item);
+  align-items: baseline;
+  padding: var(--esp-item) 0;
+  border-top: 1px dashed var(--hairline);
+  font-size: var(--tipo-corpo);
+  line-height: var(--altura-corpo);
+  color: var(--cor-texto-2);
+}
+.passos-depois li:last-child { border-bottom: 1px dashed var(--hairline); }
+.passos-depois b {
+  font-size: var(--tipo-rotulo);
+  font-weight: var(--peso-black);
+  letter-spacing: var(--tracking-rotulo);
+  font-variant-numeric: tabular-nums;
+  color: var(--cor-acento-texto);
+}
+
+.recebido-nota { margin: 0; font-size: var(--tipo-detalhe); color: var(--cor-texto-3); }
+
+@media (max-width: 700px) {
+  /* NO CELULAR O CAMPO SAI DE TRÁS DO TEXTO E VIRA FAIXA DE ABERTURA. No
+     desktop as máscaras se resolvem sozinhas porque o texto mora na esquerda e
+     sobra vazio na direita; em 390 não sobra, e a primeira versão passava os
+     pontos por trás do descritor e dos três passos. É a mesma saída que o
+     rodapé da home tomou em 05/08 pelo mesmo motivo, e a régua é a de sempre:
+     campo de pontos não passa por trás de texto corrido. */
+  .recebido-campo {
+    inset: 0 0 auto;
+    height: 13rem;
+    /* 46rem e não 30: abaixo de ~3px de lado o quadradinho deixa de ler como
+       quadradinho e vira chuvisco (régua do passe de tinta de 05/08, que ele
+       abriu com "os grafismos tão muito apagados, não dá nem pra ver"). Com
+       30rem a faixa saía com meia dúzia de pontos e nenhuma forma. */
+    /* deslocamento em REM e não em porcentagem: porcentagem posiciona em
+       relação à sobra, e numa faixa de 13rem contra um campo de 46rem qualquer
+       valor joga o MIOLO do radial pra fora e sobra a borda vazia dele (foi o
+       que aconteceu duas vezes aqui). Em rem dá pra mirar: -17rem põe o centro
+       do desenho dentro do trecho opaco da máscara. */
+    background-size: min(210vw, 46rem);
+    background-position: right -20% top -17rem;
+    -webkit-mask-image: linear-gradient(180deg, #000 55%, transparent 100%);
+            mask-image: linear-gradient(180deg, #000 55%, transparent 100%);
+  }
+  .passos-depois li { grid-template-columns: 2.5rem minmax(0, 1fr); }
+}
+</style>
+</head>
+<body>
+
+<main class="recebido">
+  <span class="grafismo-dither grafismo-dither--radial recebido-campo" aria-hidden="true"></span>
+
+  <div class="recebido-topo">
+    <a href="../" aria-label="Audácia, voltar pro início">
+      <img class="logo" src="../assets/marca/logo2.png" alt="Audácia" width="2111" height="375">
+    </a>
+  </div>
+
+  <div class="recebido-miolo">
+    <p class="rotulo">Recebido</p>
+    <h1 class="recebido-titulo">Sua análise chega no seu WhatsApp.</h1>
+    <p class="recebido-descritor">Chegou aqui do jeito certo. Agora é com a gente.</p>
+
+    <ol class="passos-depois">
+      <li><b>01</b> <span>A gente olha o que já está no ar no seu negócio hoje.</span></li>
+      <li><b>02</b> <span>Você recebe a análise no WhatsApp que deixou.</span></li>
+      <li><b>03</b> <span>Se fizer sentido pra você, a gente conversa. Sem reunião obrigatória.</span></li>
+    </ol>
+  </div>
+
+  <div class="recebido-pe">
+    <p class="recebido-nota">Seus dados não vão pra lista nenhuma. A gente responde pessoalmente.</p>
+    <p class="acao"><a class="botao botao--texto" href="../">Voltar pro site</a></p>
+  </div>
+</main>
+
+</body>
+</html>

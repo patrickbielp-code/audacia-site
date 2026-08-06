@@ -712,6 +712,8 @@ html { scroll-behavior: smooth; }
 
   .forma .linha .campo-rotulo { padding-top: var(--esp-micro); }
   .forma .passo-cabecalho.linha { align-items: center; }
+
+  .forma .campo .campo-entrada { grid-column: 2 / -1; }
 }
 
 .passo-cabecalho { padding: 0 0 var(--esp-item); }
@@ -733,33 +735,69 @@ html { scroll-behavior: smooth; }
 }
 .passo-nome .opcional { color: var(--cor-texto-3); font-weight: var(--peso-medio); }
 
+.forma {
+  --entrada-repouso: color-mix(in srgb, var(--cor-texto) 4%, transparent);
+  --entrada-viva:    color-mix(in srgb, var(--cor-texto) 8%, transparent);
+}
+
+.forma .contexto-claro {
+  --entrada-repouso: color-mix(in srgb, var(--cor-texto) 7%, transparent);
+  --entrada-viva:    color-mix(in srgb, var(--cor-texto) 12%, transparent);
+}
+
 .forma .campo {
   margin-bottom: 0;
-  padding: var(--esp-micro) 0;
+
+  padding: var(--esp-micro) 0 0;
   border-bottom: 1px solid var(--cor-borda);
-  transition: border-color var(--dur-utilidade) var(--ease-confiante);
+  cursor: text;
+  transition:
+    border-color var(--dur-utilidade) var(--ease-confiante),
+    box-shadow var(--dur-utilidade) var(--ease-confiante);
 }
-.forma .campo:focus-within { border-bottom-color: var(--cor-texto); }
+.forma .campo:hover { border-bottom-color: var(--cor-borda-forte); }
+
+.forma .campo:focus-within {
+  border-bottom-color: var(--cor-acento);
+  box-shadow: 0 1px 0 var(--cor-acento);
+}
 .forma .campo .campo-rotulo { margin-bottom: 0; color: var(--cor-texto-3); }
-.forma .campo:focus-within .campo-rotulo { color: var(--cor-texto-2); }
+.forma .campo:focus-within .campo-rotulo { color: var(--cor-texto); }
 .forma .campo .campo-entrada {
-  background: transparent;
+  background: var(--entrada-repouso);
   border: 0;
   border-radius: 0;
-  padding: var(--esp-micro) 0;
-  max-width: 30rem;
+
+  padding: var(--esp-micro);
+  margin-left: calc(var(--esp-micro) * -1);
+  width: calc(100% + var(--esp-micro));
+  max-width: none;
   font-size: var(--tipo-destaque);
   color: var(--cor-texto);
   min-height: 2.75rem;
+  transition: background-color var(--dur-utilidade) var(--ease-confiante);
 }
+.forma .campo:hover .campo-entrada,
+.forma .campo .campo-entrada:focus { background: var(--entrada-viva); }
+
+.forma .campo .campo-entrada:focus-visible { outline: none; }
 .forma .campo .campo-entrada::placeholder { color: var(--cor-texto-3); }
+
+@media (forced-colors: active) {
+  .forma .campo .campo-entrada { border: 1px solid; }
+  .forma .campo .campo-entrada:focus-visible { outline: 3px solid; outline-offset: 2px; }
+}
 .forma .campo .campo-mensagem {
   grid-column: 2;
   margin-top: 0;
   padding-bottom: var(--esp-micro);
   color: var(--cor-texto-3);
 }
-.forma .campo--erro { border-bottom-color: var(--cor-erro); }
+
+.forma .campo--erro {
+  border-bottom-color: var(--cor-erro);
+  box-shadow: 0 1px 0 var(--cor-erro);
+}
 .forma .campo--erro .campo-mensagem { color: var(--cor-erro); }
 @media (max-width: 899px) { .forma .campo .campo-mensagem { grid-column: auto; } }
 

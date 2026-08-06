@@ -260,10 +260,12 @@
   </span>
 
   <form class="forma" method="post"
-        action="https://uwsrhlifgdpmkezduimk.supabase.co/functions/v1/leads-webhook?key=CHAVE_PENDENTE"
-        data-destino="supabase:leads" data-chave-pendente>
+        action="https://uwsrhlifgdpmkezduimk.supabase.co/functions/v1/leads-webhook?key=531800281d17a03a5f799f5c4f04bb41"
+        data-destino="supabase:leads">
 
     <input type="hidden" name="form_name" value="home-audacia">
+
+    <input type="hidden" name="redirect_path" value="/recebido/">
     <input type="hidden" name="pagina" value="">
     <input type="hidden" name="utm_source" value="">
     <input type="hidden" name="utm_medium" value="">
@@ -569,9 +571,8 @@
 <script>
   window.AUDACIA_TRACKER = {
     endpoint: 'https://uwsrhlifgdpmkezduimk.supabase.co/functions/v1/tracker-pixel',
-    key: 'CHAVE_PENDENTE'
+    key: '531800281d17a03a5f799f5c4f04bb41'
   };
-  if (window.AUDACIA_TRACKER.key === 'CHAVE_PENDENTE') window.AUDACIA_TRACKER = {};
 </script>
 <script src="assets/tracker.js" defer></script>
 
@@ -581,25 +582,41 @@
   if (!f) return;
 
   var q = new URLSearchParams(location.search);
+  var campo = function (nome) { return f.querySelector('[name="' + nome + '"]'); };
   var preenche = function (nome, valor) {
-    var el = f.querySelector('[name="' + nome + '"]');
+    var el = campo(nome);
     if (el) el.value = valor || '';
   };
   preenche('pagina', location.href);
   ['utm_source', 'utm_medium', 'utm_campaign', 'utm_term', 'utm_content']
     .forEach(function (k) { preenche(k, q.get(k)); });
 
+  var enviando = false;
+  var botao = f.querySelector('.botao-envio');
+  var rotulo = botao ? botao.textContent : '';
+
   f.addEventListener('submit', function (e) {
-    if (f.hasAttribute('data-chave-pendente')) { e.preventDefault(); return; }
     e.preventDefault();
+    /* clique duplo no momento do dinheiro grava DOIS leads e o CRM ganha um
+       alvo duplicado: a trava é aqui, não no banco */
+    if (enviando) return;
+    enviando = true;
     f.classList.remove('forma--falhou');
+    if (botao) { botao.disabled = true; botao.textContent = 'Enviando…'; }
+
     fetch(f.action, { method: 'POST', body: new FormData(f) })
       .then(function (r) { return r.json(); })
       .then(function (d) {
         if (!d || !d.ok) throw new Error('recusado');
         f.classList.add('forma--enviada');
+        var destino = campo('redirect_path');
+        location.assign(destino && destino.value ? destino.value : '/recebido/');
       })
-      .catch(function () { f.classList.add('forma--falhou'); });
+      .catch(function () {
+        enviando = false;
+        if (botao) { botao.disabled = false; botao.textContent = rotulo; }
+        f.classList.add('forma--falhou');
+      });
   });
 })();
 </script>
