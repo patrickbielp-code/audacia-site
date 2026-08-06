@@ -1,5 +1,7 @@
 
 
+html { scroll-behavior: smooth; }
+
 .par {
   display: grid;
   gap: var(--esp-bloco);
@@ -625,8 +627,23 @@
   border-top: 1px solid var(--hairline);
   position: relative;
   z-index: 1;
+
+  opacity: 0;
+  translate: 0 -0.75rem;
+  transition:
+    opacity var(--dur-conteudo) var(--ease-confiante),
+    translate var(--dur-conteudo) var(--ease-confiante),
+    display var(--dur-conteudo) allow-discrete;
 }
-.forma:has(:target) .sala { display: block; }
+.forma:has(:target) .sala {
+  display: block;
+  opacity: 1;
+  translate: 0 0;
+}
+
+@starting-style {
+  .forma:has(:target) .sala { opacity: 0; translate: 0 -0.75rem; }
+}
 .sala-miolo { max-width: var(--container); margin: 0 auto; }
 
 .indice {
@@ -676,6 +693,9 @@
   display: block;
   animation: entrar var(--dur-conteudo) var(--ease-confiante) both;
 }
+
+.passo { scroll-margin-top: 15rem; }
+@media (max-width: 700px) { .passo { scroll-margin-top: 13rem; } }
 @keyframes entrar {
   from { opacity: 0; transform: translateY(0.75rem); }
   to   { opacity: 1; transform: none; }
