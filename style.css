@@ -121,7 +121,8 @@ html { scroll-behavior: smooth; }
   isolation: isolate;
   text-align: center;
 }
-.palco > .barra,
+
+.palco > .barra { position: relative; z-index: 2; }
 .palco > .miolo { position: relative; z-index: 1; }
 .palco > .grafismo-dither { position: absolute; z-index: 0; }
 
