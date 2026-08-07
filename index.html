@@ -604,7 +604,22 @@
     f.classList.remove('forma--falhou');
     if (botao) { botao.disabled = true; botao.textContent = 'Enviando…'; }
 
-    fetch(f.action, { method: 'POST', body: new FormData(f) })
+    /* ⚠️ O `redirect_path` SAI do envio por fetch, e isto não é detalhe.
+       Ele existe pro POST nativo do navegador, que precisa que a FUNÇÃO leve a
+       pessoa pra confirmação. Mandado junto no fetch, a função responde 303, o
+       fetch SEGUE o redirect sozinho, recebe o HTML do /recebido/ e o `.json()`
+       estoura no catch: o lead entra no banco e a pessoa lê "não deu pra
+       enviar", o que convida a mandar de novo e duplicar o alvo no CRM.
+       Quando o JS está no comando, é o JS que navega.
+
+       ISTO SÓ APARECEU NA PRODUÇÃO, e a lição é do teste e não do código: o
+       guarda do redirect exige origem `https`, e em `localhost` (http) a função
+       devolvia JSON, então o caminho testado localmente NÃO era o caminho real.
+       Régua: comportamento que depende de https não se prova em localhost. */
+    var dados = new FormData(f);
+    dados.delete('redirect_path');
+
+    fetch(f.action, { method: 'POST', body: dados })
       .then(function (r) { return r.json(); })
       .then(function (d) {
         if (!d || !d.ok) throw new Error('recusado');
