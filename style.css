@@ -404,7 +404,8 @@ html { scroll-behavior: smooth; }
   text-wrap: balance;
 }
 
-.quadro--4 .manchete .unidade {
+.quadro--4 .manchete .unidade,
+.quadro--fecho .manchete .unidade {
   font-size: calc(100cqw / 22);
   font-weight: var(--peso-black);
   letter-spacing: var(--tracking-manifesto);
@@ -420,12 +421,7 @@ html { scroll-behavior: smooth; }
 .quadro--abertura .par { width: 100%; }
 .quadro--abertura .abertura { max-width: 20ch; margin-bottom: var(--esp-grupo); }
 
-.quadro--fecho { justify-items: stretch; text-align: left; flex-basis: 100vw; }
-.quadro--fecho .par { width: 100%; }
-.quadro--fecho .abertura { max-width: 20ch; margin-bottom: var(--esp-item); }
-.quadro--fecho .descritor { max-width: 46ch; }
-
-.acao-fecho { margin: var(--esp-grupo) 0 0; }
+.acao-fecho { margin: var(--esp-item) 0 0; }
 
 .contador {
   margin: 0;
@@ -474,12 +470,12 @@ html { scroll-behavior: smooth; }
     padding: var(--esp-bloco) var(--esp-item);
   }
 
-  .quadro--abertura,
-  .quadro--fecho { flex-basis: auto; min-height: auto; scroll-snap-align: none; }
+  .quadro--abertura { flex-basis: auto; min-height: auto; scroll-snap-align: none; }
 
   .manchete .cifra { font-size: calc(100cqw / 6.4); }
   .manchete .unidade { font-size: var(--tipo-h3); }
-  .quadro--4 .manchete .unidade { font-size: calc(100cqw / 11); }
+  .quadro--4 .manchete .unidade,
+  .quadro--fecho .manchete .unidade { font-size: calc(100cqw / 11); }
 
   .quadro .campo-secao { background-size: min(230vw, 46rem); }
 }
