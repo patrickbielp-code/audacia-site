@@ -229,6 +229,22 @@ html { scroll-behavior: smooth; }
 
 .palco .descritor { max-width: 44ch; }
 
+.acoes-hero {
+  margin: 0;
+  display: flex;
+  flex-wrap: wrap;
+  justify-content: center;
+  gap: var(--esp-item);
+}
+
+@media (max-width: 30rem) {
+  .acoes-hero {
+    display: grid;
+    grid-template-columns: 1fr;
+    width: min(100%, 20rem);
+  }
+}
+
 .deslize {
   margin: 0;
   display: grid;
@@ -360,6 +376,8 @@ html { scroll-behavior: smooth; }
   min-height: min(84svh, 44rem);
 }
 .quadro > :not(.campo-secao) { position: relative; z-index: 1; }
+
+.acao-prova { margin: 0; }
 
 .quadro .campo-secao {
   background-position: center 42%;
