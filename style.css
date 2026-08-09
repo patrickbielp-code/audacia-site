@@ -423,6 +423,8 @@ html { scroll-behavior: smooth; }
 
 .acao-fecho { margin: var(--esp-item) 0 0; }
 
+.quadro--fecho .descritor { text-wrap: balance; }
+
 .contador {
   margin: 0;
   display: flex;
