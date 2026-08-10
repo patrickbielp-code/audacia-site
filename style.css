@@ -423,8 +423,6 @@ html { scroll-behavior: smooth; }
 
 .acao-fecho { margin: var(--esp-item) 0 0; }
 
-.quadro--fecho .descritor { text-wrap: balance; }
-
 .contador {
   margin: 0;
   display: flex;
@@ -456,8 +454,14 @@ html { scroll-behavior: smooth; }
   0% { transform: translateX(-100%); }
   60%, 100% { transform: translateX(100%); }
 }
+
+@keyframes descer {
+  0% { transform: translateY(-100%); }
+  60%, 100% { transform: translateY(100%); }
+}
 @media (prefers-reduced-motion: reduce) {
-  .contador .traco::after { animation: none; transform: translateX(0); opacity: 0.35; }
+
+  .contador .traco::after { animation: none; transform: none; opacity: 0.35; }
 }
 
 @media (max-width: 700px) {
@@ -472,7 +476,17 @@ html { scroll-behavior: smooth; }
     padding: var(--esp-bloco) var(--esp-item);
   }
 
-  .quadro--abertura { flex-basis: auto; min-height: auto; scroll-snap-align: none; }
+  .quadro--abertura {
+    flex-basis: auto;
+    justify-items: center;
+    text-align: center;
+  }
+  .quadro--abertura .par { justify-items: center; }
+  .quadro--abertura .abertura { max-width: 16ch; margin-inline: auto; }
+
+  .contador { flex-direction: column; gap: var(--esp-item); }
+  .contador .traco { width: 1px; height: var(--escala-8); }
+  .contador .traco::after { transform: translateY(-100%); animation-name: descer; }
 
   .manchete .cifra { font-size: calc(100cqw / 6.4); }
   .manchete .unidade { font-size: var(--tipo-h3); }
@@ -758,20 +772,21 @@ html { scroll-behavior: smooth; }
 .passo-nome .opcional { color: var(--cor-texto-3); font-weight: var(--peso-medio); }
 
 .forma {
-  --entrada-repouso: color-mix(in srgb, var(--cor-texto) 4%, transparent);
-  --entrada-viva:    color-mix(in srgb, var(--cor-texto) 8%, transparent);
+  --entrada-repouso: color-mix(in srgb, var(--cor-texto) 11%, transparent);
+  --entrada-viva:    color-mix(in srgb, var(--cor-texto) 16%, transparent);
 }
 
 .forma .contexto-claro {
-  --entrada-repouso: color-mix(in srgb, var(--cor-texto) 7%, transparent);
-  --entrada-viva:    color-mix(in srgb, var(--cor-texto) 12%, transparent);
+  --entrada-repouso: color-mix(in srgb, var(--cor-texto) 14%, transparent);
+  --entrada-viva:    color-mix(in srgb, var(--cor-texto) 20%, transparent);
 }
 
 .forma .campo {
   margin-bottom: 0;
 
   padding: var(--esp-micro) 0 0;
-  border-bottom: 1px solid var(--cor-borda);
+
+  border-bottom: 1px solid var(--cor-borda-forte);
   cursor: text;
   transition:
     border-color var(--dur-utilidade) var(--ease-confiante),
@@ -803,7 +818,8 @@ html { scroll-behavior: smooth; }
 .forma .campo .campo-entrada:focus { background: var(--entrada-viva); }
 
 .forma .campo .campo-entrada:focus-visible { outline: none; }
-.forma .campo .campo-entrada::placeholder { color: var(--cor-texto-3); }
+
+.forma .campo .campo-entrada::placeholder { color: var(--cor-texto-2); }
 
 @media (forced-colors: active) {
   .forma .campo .campo-entrada { border: 1px solid; }
