@@ -1,0 +1,176 @@
+<!DOCTYPE html>
+<html lang="pt-BR">
+<head>
+<meta charset="utf-8">
+<meta name="viewport" content="width=device-width, initial-scale=1">
+<title>COEMP · 7 perguntas</title>
+<style>
+:root{
+  --navy:#0B1538;
+  --navy-2:#111d47;
+  --pessego:#FBC394;
+  --pessego-2:#F3BA83;
+  --caramelo:#B87A51;
+  --papel:#FBF9F6;
+  --papel-2:#F3EFE9;
+  --tinta:#1A1A1C;
+  --tinta-3:#66666D;
+  --linha:#E2DCD3;
+  --serif:ui-serif,"Iowan Old Style","Palatino Linotype",Palatino,Georgia,serif;
+  --sans:-apple-system,BlinkMacSystemFont,"Segoe UI",Inter,Roboto,Helvetica,Arial,sans-serif;
+  --mono:ui-monospace,SFMono-Regular,Menlo,Consolas,monospace;
+  --w:min(760px,90vw);
+}
+*{box-sizing:border-box}
+body{margin:0;background:var(--papel);color:var(--tinta);font-family:var(--sans);
+  font-size:17.5px;line-height:1.68;-webkit-font-smoothing:antialiased}
+h1,h2{font-family:var(--serif);font-weight:600;line-height:1.15;margin:0}
+p{margin:0 0 1em}
+.w{width:var(--w);margin:0 auto}
+
+header{background:var(--navy);color:#fff;padding:clamp(3rem,8vw,5.5rem) 0 clamp(2.6rem,6vw,4rem);
+  position:relative;overflow:hidden}
+header::before{content:"";position:absolute;width:46vw;height:46vw;right:-13vw;top:-17vw;
+  background:linear-gradient(150deg,var(--pessego-2),var(--caramelo));opacity:.14;
+  clip-path:polygon(50% 0,100% 42%,72% 100%,8% 74%);pointer-events:none}
+header .w{position:relative;z-index:2}
+.eyebrow{font-family:var(--mono);font-size:.7rem;letter-spacing:.17em;text-transform:uppercase;
+  color:var(--pessego);margin-bottom:1.1rem}
+h1{font-size:clamp(1.75rem,4.2vw,2.6rem);color:#fff;max-width:17ch;margin-bottom:1.4rem}
+header p{color:#D3D8E6;max-width:54ch;font-size:1.03rem}
+header p:last-child{margin-bottom:0}
+
+.como{background:var(--pessego);color:var(--navy);padding:1.4rem 0}
+.como .w{display:flex;gap:1rem;align-items:flex-start}
+.como .ic{font-size:1.4rem;line-height:1.2}
+.como p{margin:0;font-size:.97rem;font-weight:500}
+
+main{padding:clamp(2.6rem,6vw,4rem) 0 1rem}
+
+.q{border-top:1px solid var(--linha);padding:2.1rem 0}
+.q:first-child{border-top:none;padding-top:0}
+.qn{font-family:var(--mono);font-size:.72rem;letter-spacing:.14em;color:var(--caramelo);
+  text-transform:uppercase;margin-bottom:.7rem}
+h2{font-size:clamp(1.22rem,2.7vw,1.5rem);margin-bottom:.7rem;max-width:26ch}
+.q p{color:var(--tinta-3);font-size:1rem;margin-bottom:0}
+.q p+p{margin-top:.6rem}
+.dica{display:inline-block;margin-top:.9rem;font-size:.88rem;color:var(--caramelo);
+  border-left:2px solid var(--pessego-2);padding-left:.8rem}
+
+.fim{background:var(--navy);color:#D3D8E6;padding:clamp(2.6rem,6vw,4rem) 0;margin-top:2.5rem}
+.fim h2{color:#fff;margin-bottom:1rem;max-width:28ch}
+.fim p{max-width:56ch}
+.fim p:last-child{margin-bottom:0}
+.fim b{color:var(--pessego)}
+
+footer{background:var(--navy-2);color:#7C86A6;padding:1.6rem 0;font-size:.78rem;
+  border-top:1px solid rgba(251,195,148,.14)}
+footer .w{display:flex;flex-wrap:wrap;gap:.4rem 1.4rem;align-items:center}
+footer b{color:var(--pessego);font-family:var(--serif);font-weight:600;font-size:.9rem}
+footer .dir{margin-left:auto;font-family:var(--mono);font-size:.7rem}
+</style>
+</head>
+<body>
+
+<header>
+  <div class="w">
+    <div class="eyebrow">COEMP · Audácia</div>
+    <h1>7 perguntas antes de a gente começar</h1>
+    <p>O que a gente escrever no site de vocês vai ter que se sustentar depois. Então, antes de
+      qualquer coisa, preciso entender a COEMP pela voz de quem toca ela.</p>
+    <p>Não tem resposta certa nem errada aqui. O que eu preciso é do jeito que <b>vocês</b> explicam
+      as coisas, porque é disso que sai o texto.</p>
+  </div>
+</header>
+
+<div class="como">
+  <div class="w">
+    <span class="ic">🎤</span>
+    <p>Pode responder tudo por áudio no WhatsApp, do jeito que vier. Não precisa organizar, não
+      precisa ficar bonito. Áudio comprido é ótimo.</p>
+  </div>
+</div>
+
+<main class="w">
+
+  <div class="q">
+    <div class="qn">Pergunta 1</div>
+    <h2>Até onde vai o serviço de vocês?</h2>
+    <p>Fora a rotina do mês (guias, folha, obrigações), vocês fazem análise caso a caso? Comparar
+      regime tributário, olhar se dá para pagar menos imposto, montar cenário para uma decisão da
+      empresa.</p>
+    <p class="dica">Quero entender se vocês entregam análise ou só execução. Muda bastante o que dá
+      para prometer no site.</p>
+  </div>
+
+  <div class="q">
+    <div class="qn">Pergunta 2</div>
+    <h2>Por que um cliente escolhe vocês e não o que cobra mais barato?</h2>
+    <p>O que vocês fazem que o escritório da esquina não faz? Pode ser bobo, pode ser miúdo.</p>
+    <p class="dica">Normalmente é justamente a coisa miúda que ninguém conta, e é ela que vira o
+      argumento mais forte da página.</p>
+  </div>
+
+  <div class="q">
+    <div class="qn">Pergunta 3</div>
+    <h2>Quem vocês querem atender daqui pra frente?</h2>
+    <p>Quem está abrindo a primeira empresa, ou quem já fatura e está trocando de contador? E tem
+      algum tipo de empresa que já é maioria na carteira de vocês, tipo clínica, obra, comércio,
+      prestador de serviço?</p>
+  </div>
+
+  <div class="q">
+    <div class="qn">Pergunta 4</div>
+    <h2>Como é o melhor cliente de vocês? E o que dá prejuízo?</h2>
+    <p>Pensa naquele que dá lucro e não dá dor de cabeça, e depois naquele que dá trabalho demais
+      para o que paga. O que separa um do outro?</p>
+  </div>
+
+  <div class="q">
+    <div class="qn">Pergunta 5</div>
+    <h2>O que a pessoa fala quando chega em vocês?</h2>
+    <p>Principalmente quem vem de outro contador. Qual é a reclamação, com as palavras dela.</p>
+    <p class="dica">Se você lembrar da frase exata que alguém falou, me manda a frase. Isso vale
+      mais do que qualquer coisa que eu escreva sozinho.</p>
+  </div>
+
+  <div class="q">
+    <div class="qn">Pergunta 6</div>
+    <h2>Como é o dia a dia de quem é cliente de vocês?</h2>
+    <p>Quando alguém manda mensagem, em quanto tempo vocês respondem? A pessoa fala sempre com a
+      mesma pessoa aí ou cai em quem estiver disponível?</p>
+    <p>E quando alguém quer sair de outro contador e vir para vocês, como funciona? O que vocês
+      pedem, quanto tempo leva, quem fala com o contador antigo?</p>
+  </div>
+
+  <div class="q">
+    <div class="qn">Pergunta 7</div>
+    <h2>O que vocês têm de prova?</h2>
+    <p>Cliente que toparia falar bem de vocês (áudio de WhatsApp já serve), caso em que vocês
+      economizaram imposto ou resolveram um problema feio, avaliações no Google, quantos clientes
+      vocês atendem hoje.</p>
+    <p>E uma última, que é de vocês e não da empresa: <b>topariam aparecer no site?</b> Nome, foto,
+      talvez um vídeo curto.</p>
+  </div>
+
+</main>
+
+<div class="fim">
+  <div class="w">
+    <h2>Se não souber alguma de cabeça, só falar</h2>
+    <p><b>Melhor não saber do que chutar.</b> Tudo que entrar no site precisa ser verdade que se
+      sustenta, então uma lacuna que a gente conhece vale muito mais do que uma resposta inventada.</p>
+    <p>Qualquer dúvida, é só chamar.</p>
+  </div>
+</div>
+
+<footer>
+  <div class="w">
+    <b>Audácia</b>
+    <span>marketing que não tem medo!</span>
+    <span class="dir">COEMP · agosto 2026</span>
+  </div>
+</footer>
+
+</body>
+</html>
