@@ -7,8 +7,8 @@
  * quiz_iniciado (tocou em Começar), quiz_resposta (cada pergunta: mostra onde as pessoas param),
  * quiz_concluido (respondeu a P4) e lead_capturado (gravado pelo SERVIDOR, quando o lead entra).
  */
-import cfg from './quiz.config.js?v=35fe2734';
-import { sequencia, calcular, notaTexto, BLOCOS, TOTAL_PERGUNTAS } from './logica/motor.js?v=35fe2734';
+import cfg from './quiz.config.js?v=205d8bce';
+import { sequencia, calcular, notaTexto, BLOCOS, TOTAL_PERGUNTAS } from './logica/motor.js?v=205d8bce';
 
 const RT = window.QUIZ_RUNTIME || {};
 const TRACKER = window.AUDACIA_TRACKER || {};
@@ -109,8 +109,6 @@ function titulo(el, texto) {
 
 function montarAbertura() {
   const a = cfg.abertura;
-  $('abertura-selo').textContent = a.selo || '';
-  $('abertura-selo').hidden = !a.selo;
   textoComAcento($('abertura-titulo'), a.titulo, a.destaque);
   $('abertura-apoio').textContent = a.apoio;
   /* "7 perguntas · 3 minutos" vira duas partes com um ponto amarelo no meio */
@@ -131,26 +129,10 @@ function renderPergunta() {
   const id = seq[estado.pos];
   const p = cfg.perguntas[id];
   const n = estado.pos + 1;
-  $('progresso-barra').style.width = Math.round((estado.pos / TOTAL_PERGUNTAS) * 100) + '%';
-  $('progresso-n').textContent = String(n);
-  $('progresso-total').textContent = String(TOTAL_PERGUNTAS);
+  const pct = Math.round((estado.pos / TOTAL_PERGUNTAS) * 100);
+  $('progresso-barra').style.width = pct + '%';
+  $('progresso-pct').textContent = pct + '% pronto';
   $('progresso-bloco').textContent = cfg.blocos[p.bloco].nome;
-
-  /* trilha (só no computador): os três blocos, o atual aceso e os já passados marcados */
-  $('trilha-n').textContent = String(n);
-  $('trilha-total').textContent = String(TOTAL_PERGUNTAS);
-  const passados = new Set(seq.slice(0, estado.pos).map((q) => cfg.perguntas[q].bloco));
-  const trilha = $('trilha-blocos');
-  trilha.textContent = '';
-  for (const b of BLOCOS) {
-    const li = document.createElement('li');
-    li.className = b === p.bloco ? 'atual' : passados.has(b) ? 'feito' : '';
-    li.innerHTML = '<i></i><b></b><span></span>';
-    li.querySelector('b').textContent = cfg.blocos[b].nome;
-    li.querySelector('span').textContent = cfg.blocos[b].pergunta;
-    trilha.append(li);
-  }
-  document.querySelector('.tela-pergunta .progresso').setAttribute('aria-valuenow', String(n));
 
   const box = $('pergunta');
   box.style.animation = 'none';

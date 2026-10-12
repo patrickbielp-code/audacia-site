@@ -1,7 +1,6 @@
 /* Audácia · quiz da receita.
-   Celular primeiro e centralizado (pedido dele, 12/10). Computador tem layout próprio a partir de
-   1024px: abertura em palco, pergunta com a trilha dos três blocos ao lado, captura e resultado
-   em duas colunas.
+   Celular primeiro e centralizado (pedido dele, 12/10). No computador é a mesma coluna única,
+   maior; duas colunas foram reprovadas na rodada 2 (difícil de entender à primeira vista).
    Tokens da home da Audácia: preto #101113, amarelo #ffc200, Plus Jakarta Sans, botão em pílula,
    campo em LINHA com o foco no filete, linguagem de pontos (quadradinhos). */
 @font-face {
@@ -216,10 +215,9 @@ button, input, select { font: inherit; color: inherit; }
   position: absolute;
   inset: 0;
   border-radius: 50%;
-  border: 1.5px dotted rgba(255, 255, 255, 0.22);
+  border: 1.5px dotted rgba(255, 194, 0, 0.24);
   animation: orbita 60s linear infinite;
 }
-.ab-anel i:last-child { inset: 14%; border-color: rgba(255, 194, 0, 0.3); animation-duration: 40s; animation-direction: reverse; }
 .ab-anel i::before {
   content: '';
   position: absolute;
@@ -231,32 +229,8 @@ button, input, select { font: inherit; color: inherit; }
   border-radius: 1.5px;
   background: var(--amarelo);
 }
-.ab-anel i:first-child::before { background: var(--branco-48); }
 @keyframes orbita { to { transform: rotate(360deg); } }
-.grafismo {
-  position: absolute;
-  z-index: 0;
-  width: 360px;
-  height: 360px;
-  background: url('marca/canto-dither.svg') no-repeat center / contain;
-  filter: brightness(1.8);
-  pointer-events: none;
-}
-.grafismo-a { top: -120px; right: -170px; }
-.grafismo-b { bottom: -150px; left: -190px; transform: rotate(180deg); opacity: 0.7; }
 .abertura-corpo { position: relative; z-index: 1; display: flex; flex-direction: column; align-items: center; gap: 22px; padding-top: 2vh; }
-.abertura-selo {
-  margin: 0;
-  padding: 7px 14px;
-  border: 1px solid var(--amarelo-filete);
-  border-radius: var(--raio-pilula);
-  color: var(--amarelo);
-  font-size: 0.75rem;
-  font-weight: 800;
-  letter-spacing: 0.14em;
-  text-transform: uppercase;
-  background: rgba(16, 17, 19, 0.7);
-}
 .abertura-titulo {
   margin: 0;
   font-size: clamp(2.3rem, 1.1rem + 6.4vw, 3.6rem);
@@ -289,19 +263,18 @@ button, input, select { font: inherit; color: inherit; }
 .progresso-barra { height: 100%; width: 0; background: var(--amarelo); border-radius: 4px; transition: width 420ms var(--curva); }
 .progresso-txt {
   display: flex;
-  justify-content: center;
+  justify-content: space-between;
   gap: 10px;
-  margin-top: 12px;
+  margin-bottom: 10px;
   font-size: 0.8125rem;
-  font-weight: 600;
-  color: var(--branco-48);
+  font-weight: 800;
+  letter-spacing: 0.1em;
+  text-transform: uppercase;
   font-variant-numeric: tabular-nums;
 }
-.progresso-txt > span:first-child span:first-child { color: var(--branco); }
-.progresso-bloco { letter-spacing: 0.1em; text-transform: uppercase; font-weight: 800; color: var(--amarelo); }
-.progresso-bloco::before { content: '·'; margin-right: 10px; color: var(--branco-48); }
+.progresso-bloco { color: var(--amarelo); }
+.progresso-pct { color: var(--branco-48); }
 .progresso-cheio { margin-bottom: 26px; }
-.trilha { display: none; }
 
 /* ── pergunta ── */
 .pergunta { animation: entra 360ms var(--curva) both; }
@@ -539,96 +512,40 @@ button, input, select { font: inherit; color: inherit; }
 @media (min-width: 640px) {
   .palco { padding-top: 28px; }
   .marca { width: 128px; }
-  .grafismo { width: 480px; height: 480px; }
   .video { aspect-ratio: 16 / 10; }
 }
 
-/* ── computador ── */
+/* ── computador: a mesma coluna única e centrada do celular, só maior (pedido dele, 12/10:
+   nada de duas colunas, nem na pergunta nem no resultado) ── */
 @media (min-width: 1024px) {
   body { background: radial-gradient(1200px 700px at 50% -10%, #17191d 0%, var(--preto) 60%); }
-  .palco { max-width: 78rem; padding: 32px 56px 48px; }
+  .palco { max-width: 46rem; padding: 32px 32px 56px; }
   .topo { height: 56px; margin-bottom: 0; }
   .marca { width: 136px; }
   .voltar { font-size: 0.9375rem; }
   .tela { padding-top: 40px; }
 
-  /* abertura: palco centrado */
-  .tela-abertura { justify-content: center; gap: 56px; padding-top: 0; min-height: calc(100svh - 140px); }
-  .ab-anel { top: 46%; width: 820px; max-width: none; }
-  .grafismo { width: 620px; height: 620px; }
-  .grafismo-a { top: -260px; right: -240px; }
-  .grafismo-b { bottom: -260px; left: -260px; }
-  .abertura-corpo { gap: 28px; padding-top: 0; }
-  .abertura-titulo { max-width: 17ch; font-size: clamp(3.6rem, 1rem + 4vw, 5.25rem); }
-  .abertura-apoio { max-width: 34rem; font-size: 1.25rem; }
-  .abertura-pe { padding-top: 0; }
+  .tela-abertura { min-height: calc(100svh - 140px); padding-top: 0; gap: 52px; }
+  .ab-anel { top: 44%; width: 760px; max-width: none; }
+  .abertura-corpo { gap: 28px; }
+  .abertura-titulo { max-width: 17ch; font-size: clamp(3.4rem, 1rem + 3.6vw, 4.75rem); }
+  .abertura-apoio { max-width: 32rem; font-size: 1.1875rem; }
   .cta { max-width: 25rem; }
   .cta-pista { height: 64px; }
   .cta-disco { width: 52px; height: 52px; margin-top: -26px; }
   .cta.indo .cta-disco { left: calc(100% - 58px); }
   .cta-txt { padding-left: 66px; font-size: 1rem; }
 
-  /* pergunta: a trilha dos três blocos à esquerda, a pergunta à direita */
-  .tela-pergunta {
-    display: grid;
-    grid-template-columns: 300px minmax(0, 1fr);
-    gap: 96px;
-    align-items: center;
-    min-height: calc(100svh - 160px);
-    padding-bottom: 40px;
-  }
-  .trilha { display: block; align-self: center; padding-right: 48px; border-right: 1px solid var(--borda); }
-  .trilha-n { margin: 0 0 36px; display: flex; align-items: baseline; gap: 10px; font-variant-numeric: tabular-nums; }
-  .trilha-n b { font-size: 6.5rem; font-weight: 800; line-height: 0.8; letter-spacing: -0.05em; color: var(--amarelo); }
-  .trilha-n > span { font-size: 1.125rem; font-weight: 700; color: var(--branco-48); }
-  .trilha-blocos { list-style: none; margin: 0; padding: 0; display: flex; flex-direction: column; gap: 22px; }
-  .trilha-blocos li { display: grid; grid-template-columns: 14px 1fr; gap: 4px 16px; align-items: center; color: var(--branco-48); transition: color var(--dur); }
-  .trilha-blocos li i { width: 10px; height: 10px; border-radius: 2px; border: 1.5px solid var(--borda); }
-  .trilha-blocos li b { font-size: 1.125rem; font-weight: 800; }
-  .trilha-blocos li span { grid-column: 2; font-size: 0.875rem; }
-  .trilha-blocos li.feito { color: var(--branco-70); }
-  .trilha-blocos li.feito i { background: var(--branco-70); border-color: var(--branco-70); }
-  .trilha-blocos li.atual { color: var(--branco); }
-  .trilha-blocos li.atual i { background: var(--amarelo); border-color: var(--amarelo); box-shadow: 0 0 0 5px rgba(255, 194, 0, 0.16); }
-  .pergunta-coluna { max-width: 44rem; }
-  .progresso { margin-bottom: 44px; }
-  .progresso-txt { justify-content: flex-start; }
-  .pergunta-titulo { text-align: left; font-size: clamp(2.2rem, 1rem + 1.9vw, 2.9rem); margin-bottom: 36px; }
-  .opcoes { display: grid; grid-template-columns: 1fr 1fr; gap: 12px; }
-  .opcao { min-height: 84px; padding: 18px 22px 18px 18px; font-size: 1.125rem; }
+  .tela-pergunta, .tela-captura { justify-content: center; min-height: calc(100svh - 160px); padding-bottom: 40px; }
+  .pergunta-titulo { font-size: clamp(2.1rem, 1rem + 1.6vw, 2.6rem); margin-bottom: 36px; }
+  .opcao { min-height: 72px; font-size: 1.125rem; padding: 16px 22px 16px 16px; }
+  .captura-titulo { font-size: clamp(2.2rem, 1rem + 1.8vw, 2.8rem); }
+  .form { max-width: 34rem; margin: 0 auto; width: 100%; }
 
-  /* captura: título à esquerda, formulário à direita */
-  .tela-captura {
-    display: grid;
-    grid-template-columns: minmax(0, 1fr) minmax(0, 30rem);
-    gap: 96px;
-    align-items: center;
-    min-height: calc(100svh - 160px);
-  }
-  .captura-cabeca .progresso { display: none; }
-  .captura-cabeca .ornamento { margin: 0; justify-content: flex-start; width: 12rem; }
-  .captura-cabeca .ornamento i:first-child { display: none; }
-  .captura-titulo { text-align: left; font-size: clamp(2.8rem, 1rem + 3vw, 4rem); max-width: 14ch; margin: 28px 0 0; }
-  .form-erro { text-align: left; }
-  .form .cta { margin-left: 0; }
-
-  /* resultado: as notas à esquerda, a leitura e o vídeo à direita */
-  .tela-resultado {
-    display: grid;
-    grid-template-columns: minmax(0, 26rem) minmax(0, 1fr);
-    gap: 80px;
-    align-items: start;
-    padding-top: 56px;
-  }
-  .resultado-notas { position: sticky; top: 32px; }
-  .resultado-notas .rotulo { text-align: left; }
-  .notas { margin-bottom: 0; }
-  .diagnostico { text-align: left; }
-  .diagnostico .ornamento { margin: 0 0 26px; justify-content: flex-start; width: 12rem; }
-  .diagnostico .ornamento i:first-child { display: none; }
-  .diag-titulo { font-size: clamp(2.8rem, 1rem + 2.8vw, 3.8rem); max-width: 15ch; }
-  .diag-texto { margin: 0; font-size: 1.3125rem; max-width: 34rem; }
-  .video { aspect-ratio: 16 / 9; max-height: none; }
+  .tela-resultado { padding-top: 48px; }
+  .diag-titulo { font-size: clamp(2.6rem, 1rem + 2.2vw, 3.4rem); }
+  .diag-texto { font-size: 1.25rem; }
+  .video { aspect-ratio: 16 / 9; }
 }
 
 @media (prefers-reduced-motion: reduce) {

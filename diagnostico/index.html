@@ -26,8 +26,8 @@
 <script src="tracker.js" defer></script>
 <!-- ══════════ fim do bloco de medição ══════════ -->
 <link rel="preload" href="fontes/plus-jakarta-sans-latin.woff2" as="font" type="font/woff2" crossorigin>
-<link rel="stylesheet" href="estilo.css?v=35fe2734">
-<script type="module" src="app.js?v=35fe2734"></script>
+<link rel="stylesheet" href="estilo.css?v=205d8bce">
+<script type="module" src="app.js?v=205d8bce"></script>
 </head>
 <body>
 <div class="palco">
@@ -38,11 +38,8 @@
 
   <!-- abertura -->
   <section class="tela tela-abertura" data-tela="abertura">
-    <div class="ab-anel" aria-hidden="true"><i></i><i></i></div>
-    <div class="grafismo grafismo-a" aria-hidden="true"></div>
-    <div class="grafismo grafismo-b" aria-hidden="true"></div>
+    <div class="ab-anel" aria-hidden="true"><i></i></div>
     <div class="abertura-corpo">
-      <p class="abertura-selo" id="abertura-selo">Diagnóstico de receita</p>
       <h1 class="abertura-titulo" id="abertura-titulo">Veja em 3 minutos onde a sua empresa está deixando <span class="acento">dinheiro na mesa</span><span class="pontuacao">.</span></h1>
       <div class="ornamento" aria-hidden="true"><i></i><span><b></b><b></b><b></b></span><i></i></div>
       <p class="abertura-apoio" id="abertura-apoio">Não é sobre marketing, não é sobre vendas, é sobre receita. Responda e descubra onde ela trava.</p>
@@ -61,14 +58,10 @@
 
   <!-- pergunta -->
   <section class="tela tela-pergunta" data-tela="pergunta" hidden>
-    <aside class="trilha" aria-hidden="true">
-      <p class="trilha-n"><b id="trilha-n">1</b><span> de <span id="trilha-total">7</span></span></p>
-      <ol class="trilha-blocos" id="trilha-blocos"></ol>
-    </aside>
     <div class="pergunta-coluna">
       <div class="progresso" role="progressbar" aria-valuemin="0" aria-valuemax="7" aria-valuenow="1" aria-label="Progresso">
+        <div class="progresso-txt"><span class="progresso-bloco" id="progresso-bloco"></span><span class="progresso-pct" id="progresso-pct">0%</span></div>
         <div class="progresso-trilho"><div class="progresso-barra" id="progresso-barra"></div></div>
-        <div class="progresso-txt"><span><span id="progresso-n">1</span> de <span id="progresso-total">7</span></span><span class="progresso-bloco" id="progresso-bloco"></span></div>
       </div>
       <div class="pergunta" id="pergunta">
         <h2 class="pergunta-titulo" id="pergunta-titulo" tabindex="-1"></h2>

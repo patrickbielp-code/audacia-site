@@ -20,7 +20,6 @@ export default {
 
   /* ── abertura ─────────────────────────────────────────────────────────────────────────────── */
   abertura: {
-    selo: 'Diagnóstico de receita', // a etiqueta acima do título (vazio: some)
     titulo: 'Veja em 3 minutos onde a sua empresa está deixando dinheiro na mesa.',
     destaque: 'dinheiro na mesa', // trecho do título que vai em amarelo (vazio: nenhum)
     apoio: 'Não é sobre marketing, não é sobre vendas, é sobre receita. Responda e descubra onde ela trava.',
