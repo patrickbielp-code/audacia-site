@@ -1,0 +1,130 @@
+<!doctype html>
+<html lang="pt-BR">
+<head>
+<meta charset="utf-8">
+<meta name="viewport" content="width=device-width, initial-scale=1, viewport-fit=cover">
+<meta name="robots" content="noindex, nofollow">
+<meta name="theme-color" content="#101113">
+<title>Diagnóstico de receita · Audácia</title>
+<meta name="description" content="Não é sobre marketing, não é sobre vendas, é sobre receita. Responda e descubra onde ela trava.">
+<meta property="og:type" content="website">
+<meta property="og:locale" content="pt_BR">
+<meta property="og:site_name" content="Audácia">
+<meta property="og:title" content="Veja em 3 minutos onde a sua empresa está deixando dinheiro na mesa.">
+<meta property="og:description" content="Não é sobre marketing, não é sobre vendas, é sobre receita. Responda e descubra onde ela trava.">
+<meta property="og:url" content="https://audacia.marketing/diagnostico/">
+<meta property="og:image" content="https://audacia.marketing/diagnostico/og.png?v=39b192f3">
+<meta property="og:image:width" content="1200">
+<meta property="og:image:height" content="630">
+<meta property="og:image:alt" content="Veja em 3 minutos onde a sua empresa está deixando dinheiro na mesa.">
+<meta name="twitter:card" content="summary_large_image">
+<meta name="twitter:title" content="Veja em 3 minutos onde a sua empresa está deixando dinheiro na mesa.">
+<meta name="twitter:description" content="Não é sobre marketing, não é sobre vendas, é sobre receita. Responda e descubra onde ela trava.">
+<meta name="twitter:image" content="https://audacia.marketing/diagnostico/og.png?v=39b192f3">
+<!-- ══════════ bloco de medição (gerado pelo montar.mjs a partir do quiz.config.js) ══════════ -->
+<script>window.QUIZ_RUNTIME={servidor:"https://uwsrhlifgdpmkezduimk.supabase.co/functions/v1/audacia-quiz"};window.AUDACIA_TRACKER={endpoint:"https://uwsrhlifgdpmkezduimk.supabase.co/functions/v1/tracker-pixel",key:"531800281d17a03a5f799f5c4f04bb41"};</script>
+<script src="tracker.js" defer></script>
+<!-- ══════════ fim do bloco de medição ══════════ -->
+<link rel="preload" href="fontes/plus-jakarta-sans-latin.woff2" as="font" type="font/woff2" crossorigin>
+<link rel="stylesheet" href="estilo.css?v=35fe2734">
+<script type="module" src="app.js?v=35fe2734"></script>
+</head>
+<body>
+<div class="palco">
+  <header class="topo">
+    <img class="marca" src="marca/logo-480.png" width="480" height="85" alt="Audácia">
+    <button class="voltar" id="voltar" type="button" hidden>Voltar</button>
+  </header>
+
+  <!-- abertura -->
+  <section class="tela tela-abertura" data-tela="abertura">
+    <div class="ab-anel" aria-hidden="true"><i></i><i></i></div>
+    <div class="grafismo grafismo-a" aria-hidden="true"></div>
+    <div class="grafismo grafismo-b" aria-hidden="true"></div>
+    <div class="abertura-corpo">
+      <p class="abertura-selo" id="abertura-selo">Diagnóstico de receita</p>
+      <h1 class="abertura-titulo" id="abertura-titulo">Veja em 3 minutos onde a sua empresa está deixando <span class="acento">dinheiro na mesa</span><span class="pontuacao">.</span></h1>
+      <div class="ornamento" aria-hidden="true"><i></i><span><b></b><b></b><b></b></span><i></i></div>
+      <p class="abertura-apoio" id="abertura-apoio">Não é sobre marketing, não é sobre vendas, é sobre receita. Responda e descubra onde ela trava.</p>
+    </div>
+    <div class="abertura-pe">
+      <button class="cta" id="comecar" type="button">
+        <span class="cta-pista">
+          <span class="cta-disco" aria-hidden="true"><svg viewBox="0 0 24 24"><path d="M5 12h13M13 6l6 6-6 6"/></svg></span>
+          <span class="cta-txt" id="comecar-txt">Começar o diagnóstico</span>
+          <span class="cta-brilho" aria-hidden="true"></span>
+        </span>
+      </button>
+      <p class="abertura-linha" id="abertura-linha"><span>7 perguntas</span><b></b><span>3 minutos</span></p>
+    </div>
+  </section>
+
+  <!-- pergunta -->
+  <section class="tela tela-pergunta" data-tela="pergunta" hidden>
+    <aside class="trilha" aria-hidden="true">
+      <p class="trilha-n"><b id="trilha-n">1</b><span> de <span id="trilha-total">7</span></span></p>
+      <ol class="trilha-blocos" id="trilha-blocos"></ol>
+    </aside>
+    <div class="pergunta-coluna">
+      <div class="progresso" role="progressbar" aria-valuemin="0" aria-valuemax="7" aria-valuenow="1" aria-label="Progresso">
+        <div class="progresso-trilho"><div class="progresso-barra" id="progresso-barra"></div></div>
+        <div class="progresso-txt"><span><span id="progresso-n">1</span> de <span id="progresso-total">7</span></span><span class="progresso-bloco" id="progresso-bloco"></span></div>
+      </div>
+      <div class="pergunta" id="pergunta">
+        <h2 class="pergunta-titulo" id="pergunta-titulo" tabindex="-1"></h2>
+        <div class="opcoes" id="opcoes" role="radiogroup" aria-labelledby="pergunta-titulo"></div>
+      </div>
+    </div>
+  </section>
+
+  <!-- captura -->
+  <section class="tela tela-captura" data-tela="captura" hidden>
+    <div class="captura-cabeca">
+      <div class="progresso progresso-cheio" aria-hidden="true">
+        <div class="progresso-trilho"><div class="progresso-barra" style="width:100%"></div></div>
+      </div>
+      <div class="ornamento ornamento-cheio" aria-hidden="true"><i></i><span><b></b><b></b><b></b></span><i></i></div>
+      <h2 class="captura-titulo" id="captura-titulo" tabindex="-1"></h2>
+    </div>
+    <form class="form" id="form" novalidate>
+      <label class="campo"><span id="l-nome"></span>
+        <input name="nome" id="f-nome" autocomplete="name" required maxlength="120"></label>
+      <label class="campo"><span id="l-whatsapp"></span>
+        <input name="whatsapp" id="f-whatsapp" type="tel" inputmode="numeric" autocomplete="tel-national" placeholder="(00) 00000-0000" required maxlength="16"></label>
+      <label class="campo"><span id="l-empresa"></span>
+        <input name="empresa" id="f-empresa" autocomplete="organization" required maxlength="120"></label>
+      <label class="campo campo-lista"><span id="l-segmento"></span>
+        <select name="segmento" id="f-segmento"><option value="">Escolha</option></select></label>
+      <label class="campo" id="campo-outro" hidden><span id="l-segmento-outro"></span>
+        <input name="segmento_outro" id="f-segmento-outro" maxlength="80"></label>
+      <fieldset class="faixas"><legend id="l-faturamento"></legend><div id="f-faturamento"></div></fieldset>
+      <label class="autoriza"><input type="checkbox" id="f-autoriza" required><span id="l-autoriza"></span></label>
+      <p class="form-erro" id="form-erro" role="alert" hidden></p>
+      <button class="cta" id="enviar" type="submit">
+        <span class="cta-pista">
+          <span class="cta-disco" aria-hidden="true"><svg viewBox="0 0 24 24"><path d="M5 12h13M13 6l6 6-6 6"/></svg></span>
+          <span class="cta-txt" id="enviar-txt"></span>
+          <span class="cta-brilho" aria-hidden="true"></span>
+        </span>
+      </button>
+    </form>
+  </section>
+
+  <!-- resultado -->
+  <section class="tela tela-resultado" data-tela="resultado" hidden>
+    <div class="resultado-notas">
+      <p class="rotulo" id="r-rotulo-notas"></p>
+      <div class="notas" id="notas"></div>
+    </div>
+    <div class="resultado-leitura">
+      <div class="diagnostico">
+        <div class="ornamento" aria-hidden="true"><i></i><span><b></b><b></b><b></b></span><i></i></div>
+        <h2 class="diag-titulo" id="diag-titulo" tabindex="-1"></h2>
+        <p class="diag-texto" id="diag-texto"></p>
+      </div>
+      <div class="video" id="video"></div>
+    </div>
+  </section>
+</div>
+</body>
+</html>
