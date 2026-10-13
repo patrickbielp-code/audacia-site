@@ -212,6 +212,9 @@ export default {
     penalidadeNaoSei: 1, // cada "não sei" tira isso da nota de Controle (nunca abaixo de 0)
     desempateFuro: ['conversao', 'atracao', 'controle'],
     maquinaAcimaDe: 7, // os três ACIMA disso (7 não conta) = "Sua máquina roda"
+    /* nota mínima que aparece (13/10: zero parecia erro na tela). A conta por dentro não muda:
+       o furo é escolhido pela nota real, e a nota real fica guardada no CRM como notas_brutas. */
+    minimoExibido: 1,
   },
 
   /* ── captura ──────────────────────────────────────────────────────────────────────────────── */

@@ -106,8 +106,12 @@ export function calcular(cfg, respostas) {
 
   const furo = maisFraco(notas, cfg.notas.desempateFuro);
   const maquina = BLOCOS.every((b) => notas[b] > cfg.notas.maquinaAcimaDe);
+  /* a nota que aparece nunca fica abaixo do mínimo (zero parece erro); o furo já saiu da real */
+  const minimo = cfg.notas.minimoExibido ?? 0;
+  const exibidas = {};
+  for (const b of BLOCOS) exibidas[b] = Math.max(minimo, notas[b]);
   return {
-    seq, notas, furo, naoSei, maquina,
+    seq, notas: exibidas, notasBrutas: notas, furo, naoSei, maquina,
     diagnostico: maquina ? 'maquina' : furo,
     pontos: { obtido, possivel },
   };
