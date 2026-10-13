@@ -414,7 +414,8 @@ button, input, select { font: inherit; color: inherit; }
 
 /* ── resultado ── */
 .tela-resultado { padding-top: 8px; }
-.notas { display: flex; flex-direction: column; gap: 10px; margin-bottom: 40px; }
+.notas { display: flex; flex-direction: column; gap: 10px; }
+.video { margin-top: 40px; }
 .nota {
   display: grid;
   grid-template-columns: 1fr auto;
@@ -458,7 +459,7 @@ button, input, select { font: inherit; color: inherit; }
   letter-spacing: 0.1em;
   text-transform: uppercase;
 }
-.diagnostico { margin-bottom: 30px; text-align: center; }
+.diagnostico { margin-bottom: 44px; text-align: center; }
 .diagnostico .ornamento { margin-bottom: 26px; }
 .diag-titulo {
   margin: 0 0 14px;
@@ -474,7 +475,6 @@ button, input, select { font: inherit; color: inherit; }
   position: relative;
   aspect-ratio: 4 / 5;
   max-height: 70svh;
-  margin: 0 0 16px;
   border-radius: var(--raio-m);
   overflow: hidden;
   background: var(--preto-elevado);

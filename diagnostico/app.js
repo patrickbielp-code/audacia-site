@@ -7,8 +7,8 @@
  * quiz_iniciado (tocou em Começar), quiz_resposta (cada pergunta: mostra onde as pessoas param),
  * quiz_concluido (respondeu a P4) e lead_capturado (gravado pelo SERVIDOR, quando o lead entra).
  */
-import cfg from './quiz.config.js?v=e720b3f3';
-import { sequencia, calcular, notaTexto, BLOCOS, TOTAL_PERGUNTAS } from './logica/motor.js?v=e720b3f3';
+import cfg from './quiz.config.js?v=0f37e5e8';
+import { sequencia, calcular, notaTexto, BLOCOS, TOTAL_PERGUNTAS } from './logica/motor.js?v=0f37e5e8';
 
 const RT = window.QUIZ_RUNTIME || {};
 const TRACKER = window.AUDACIA_TRACKER || {};
@@ -334,14 +334,9 @@ function irResultado() {
 function montarVideo(url, reservado) {
   const v = $('video');
   v.textContent = '';
-  if (!url) {
-    const r = document.createElement('div');
-    r.className = 'video-reservado';
-    r.innerHTML = '<b aria-hidden="true">▶</b><span></span>';
-    r.querySelector('span').textContent = reservado;
-    v.append(r);
-    return;
-  }
+  /* 13/10: sem vídeo gravado a caixa não aparece (pedido dele); com o link no config ela volta */
+  v.hidden = !url;
+  if (!url) return;
   const yt = url.match(/(?:youtu\.be\/|v=|shorts\/)([\w-]{11})/);
   const vm = url.match(/vimeo\.com\/(\d+)/);
   if (yt || vm) {

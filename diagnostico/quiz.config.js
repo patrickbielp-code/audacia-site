@@ -276,7 +276,8 @@ export default {
       },
     },
     videoReservado: 'vídeo do Patrick',
-    /* 12/10: o convite com botão de WhatsApp saiu do final, a pedido dele. O resultado termina no vídeo. */
+    /* 12/10: o convite com botão de WhatsApp saiu do final, a pedido dele.
+     * 13/10: a ordem virou diagnóstico, depois notas; vídeo com null não aparece (ele grava depois). */
   },
 
   /* ── medição (regra de 10/10: os 4 códigos em toda página; o publicador recusa "ir ao ar" sem eles) ── */

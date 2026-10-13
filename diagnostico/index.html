@@ -26,8 +26,8 @@
 <script src="tracker.js" defer></script>
 <!-- ══════════ fim do bloco de medição ══════════ -->
 <link rel="preload" href="fontes/plus-jakarta-sans-latin.woff2" as="font" type="font/woff2" crossorigin>
-<link rel="stylesheet" href="estilo.css?v=e720b3f3">
-<script type="module" src="app.js?v=e720b3f3"></script>
+<link rel="stylesheet" href="estilo.css?v=0f37e5e8">
+<script type="module" src="app.js?v=0f37e5e8"></script>
 </head>
 <body>
 <div class="palco">
@@ -105,18 +105,16 @@
 
   <!-- resultado -->
   <section class="tela tela-resultado" data-tela="resultado" hidden>
+    <div class="diagnostico">
+      <div class="ornamento" aria-hidden="true"><i></i><span><b></b><b></b><b></b></span><i></i></div>
+      <h2 class="diag-titulo" id="diag-titulo" tabindex="-1"></h2>
+      <p class="diag-texto" id="diag-texto"></p>
+    </div>
     <div class="resultado-notas">
       <p class="rotulo" id="r-rotulo-notas"></p>
       <div class="notas" id="notas"></div>
     </div>
-    <div class="resultado-leitura">
-      <div class="diagnostico">
-        <div class="ornamento" aria-hidden="true"><i></i><span><b></b><b></b><b></b></span><i></i></div>
-        <h2 class="diag-titulo" id="diag-titulo" tabindex="-1"></h2>
-        <p class="diag-texto" id="diag-texto"></p>
-      </div>
-      <div class="video" id="video"></div>
-    </div>
+    <div class="video" id="video" hidden></div>
   </section>
 </div>
 </body>
