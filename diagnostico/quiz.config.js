@@ -280,12 +280,13 @@ export default {
      * 13/10: a ordem virou diagnóstico, depois notas; vídeo com null não aparece (ele grava depois). */
   },
 
-  /* ── medição (regra de 10/10: os 4 códigos em toda página; o publicador recusa "ir ao ar" sem eles) ── */
+  /* ── medição (regra dele, 13/10/2026, páginas da própria Audácia): o tracker da Audácia sempre;
+   * os outros só quando forem usados. false = decidido não usar; troque pelo id quando precisar. ── */
   medicao: {
     trackerKey: '531800281d17a03a5f799f5c4f04bb41', // tracker da Audácia (cliente Audácia na plataforma)
-    googleTag: null, // [FALTA INSUMO: id do Google Tag / GA4 da Audácia, ex. G-XXXXXXX]
-    metaPixel: null, // [FALTA INSUMO: id do pixel do Meta da Audácia]
-    clarity: null, // [FALTA INSUMO: id do projeto Clarity da Audácia]
+    googleTag: false, // não usamos: o funil sai do nosso tracker. Entra quando houver anúncio no Google
+    metaPixel: false, // não usamos agora: entra quando houver anúncio no Meta (ex. '1234567890')
+    clarity: false, // não usamos: sem gravação de tela; onde desistem sai do evento quiz_resposta
   },
 
   publicacao: {

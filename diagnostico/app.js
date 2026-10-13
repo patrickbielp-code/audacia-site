@@ -7,8 +7,8 @@
  * quiz_iniciado (tocou em Começar), quiz_resposta (cada pergunta: mostra onde as pessoas param),
  * quiz_concluido (respondeu a P4) e lead_capturado (gravado pelo SERVIDOR, quando o lead entra).
  */
-import cfg from './quiz.config.js?v=0f37e5e8';
-import { sequencia, calcular, notaTexto, BLOCOS, TOTAL_PERGUNTAS } from './logica/motor.js?v=0f37e5e8';
+import cfg from './quiz.config.js?v=da03288c';
+import { sequencia, calcular, notaTexto, BLOCOS, TOTAL_PERGUNTAS } from './logica/motor.js?v=da03288c';
 
 const RT = window.QUIZ_RUNTIME || {};
 const TRACKER = window.AUDACIA_TRACKER || {};
