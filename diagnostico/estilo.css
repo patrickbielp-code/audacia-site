@@ -200,36 +200,23 @@ button, input, select { font: inherit; color: inherit; }
 
 /* ── abertura ── */
 .tela-abertura { align-items: center; justify-content: center; gap: 44px; text-align: center; padding: 2vh 0 4vh; }
-.ab-anel { /* órbita pontilhada atrás do título, com um ponto dando a volta em cada anel */
-  position: absolute;
+/* 13/10: o anel saiu (pedido dele: "não é o grafismo da Audácia"). No lugar, o grafismo de canto da
+   home (grafismos/canto-dither.svg), em dois cantos opostos da tela. Vai como máscara pra cor ficar
+   aqui: o cinza da home (#141619) some no celular, este se enxerga sem brigar com o título. */
+.ab-canto {
+  position: fixed;
   z-index: 0;
-  left: 50%;
-  top: 38%;
-  width: 150vw;
-  max-width: 640px;
+  width: clamp(10rem, 42vw, 26rem);
   aspect-ratio: 1;
-  transform: translate(-50%, -50%);
+  background: #2a2e34;
+  -webkit-mask: url('marca/canto-dither.svg') no-repeat 0 0 / 100% 100%;
+  mask: url('marca/canto-dither.svg') no-repeat 0 0 / 100% 100%;
   pointer-events: none;
 }
-.ab-anel i {
-  position: absolute;
-  inset: 0;
-  border-radius: 50%;
-  border: 1.5px dotted rgba(255, 194, 0, 0.24);
-  animation: orbita 60s linear infinite;
-}
-.ab-anel i::before {
-  content: '';
-  position: absolute;
-  left: 50%;
-  top: -4px;
-  width: 7px;
-  height: 7px;
-  margin-left: -3.5px;
-  border-radius: 1.5px;
-  background: var(--amarelo);
-}
-@keyframes orbita { to { transform: rotate(360deg); } }
+.ab-canto { display: none; }
+body:has(.tela-abertura:not([hidden])) .ab-canto { display: block; } /* só na abertura */
+.ab-canto--topo { top: 0; left: 0; }
+.ab-canto--pe { right: 0; bottom: 0; transform: rotate(180deg); }
 .abertura-corpo { position: relative; z-index: 1; display: flex; flex-direction: column; align-items: center; gap: 22px; padding-top: 2vh; }
 .abertura-titulo {
   margin: 0;
@@ -526,7 +513,6 @@ button, input, select { font: inherit; color: inherit; }
   .tela { padding-top: 40px; }
 
   .tela-abertura { min-height: calc(100svh - 140px); padding-top: 0; gap: 52px; }
-  .ab-anel { top: 44%; width: 760px; max-width: none; }
   .abertura-corpo { gap: 28px; }
   .abertura-titulo { max-width: 17ch; font-size: clamp(3.4rem, 1rem + 3.6vw, 4.75rem); }
   .abertura-apoio { max-width: 32rem; font-size: 1.1875rem; }
