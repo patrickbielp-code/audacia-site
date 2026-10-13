@@ -1361,3 +1361,13 @@ html { scroll-behavior: smooth; }
   from { opacity: 1; transform: translate3d(0, 0, 0); }
   to   { opacity: 0.06; transform: translate3d(0, -14px, 0); }
 }
+
+/* v2 posicionamento (13/10): três pontos lado a lado e o fecho ocupando a linha inteira */
+@media (min-width: 1040px) { .grade--elos .celula--ancora { grid-column: 1 / -1; min-height: 0; } }
+.convite-nota a { color: inherit; text-decoration: underline; text-underline-offset: 0.2em; }
+/* v3 identidade verbal (13/10): a headline é pergunta longa, a linha encolhe pra caber */
+.manchete--pergunta .linha { font-size: calc(100cqw / 13); }
+@media (max-width: 700px) { .manchete--pergunta .linha { font-size: calc(100cqw / 10.2); } }
+/* rodada 2 (13/10): nos três pontos, o texto embaixo do nome fica fino; só o nome pesa */
+.grade--elos .texto-celula { font-weight: var(--peso-regular, 400); }
+.grade--elos .texto-celula .nome { font-weight: var(--peso-negrito); margin-bottom: 0.35em; }
