@@ -446,6 +446,26 @@ body:has(.tela-abertura:not([hidden])) .ab-canto { display: block; } /* só na a
   letter-spacing: 0.1em;
   text-transform: uppercase;
 }
+/* 27/10: por onde começar. Filete em vez de caixa, pra não competir com as notas; número amarelo */
+.passos { margin-top: 44px; }
+.passos-lista { list-style: none; margin: 0; padding: 0; counter-reset: passo; }
+.passos-lista li {
+  display: grid;
+  grid-template-columns: 2.5rem 1fr;
+  gap: 12px;
+  padding: 18px 0;
+  border-top: 1px solid var(--borda);
+  color: var(--branco-70);
+  text-wrap: pretty;
+}
+.passos-lista li:last-child { border-bottom: 1px solid var(--borda); }
+.passos-lista li::before {
+  counter-increment: passo;
+  content: counter(passo, decimal-leading-zero);
+  font-weight: 800;
+  color: var(--amarelo);
+  font-variant-numeric: tabular-nums;
+}
 .diagnostico { margin-bottom: 44px; text-align: center; }
 .diagnostico .ornamento { margin-bottom: 26px; }
 .diag-titulo {
@@ -531,6 +551,7 @@ body:has(.tela-abertura:not([hidden])) .ab-canto { display: block; } /* só na a
   .tela-resultado { padding-top: 48px; }
   .diag-titulo { font-size: clamp(2.6rem, 1rem + 2.2vw, 3.4rem); }
   .diag-texto { font-size: 1.25rem; }
+  .passos-lista li { font-size: 1.125rem; padding: 20px 0; }
   .video { aspect-ratio: 16 / 9; }
 }
 

@@ -16,27 +16,27 @@
  *   - `vai` diz para qual pergunta a opção leva (só na P1 e na P2).
  */
 export default {
-  versao: 'v1 · 12/10/2026',
+  versao: 'v3 · 27/10/2026 (wellness)',
 
   /* ── abertura ─────────────────────────────────────────────────────────────────────────────── */
   abertura: {
-    titulo: 'Veja em 3 minutos onde a sua empresa está deixando dinheiro na mesa.',
-    destaque: 'dinheiro na mesa', // trecho do título que vai em amarelo (vazio: nenhum)
-    apoio: 'Não é sobre marketing, não é sobre vendas, é sobre receita. Responda e descubra onde ela trava.',
+    titulo: 'Seu negócio está crescendo, ou só repondo quem sai?',
+    destaque: 'repondo quem sai', // trecho do título que vai em amarelo (vazio: nenhum)
+    apoio: 'Para empresas de wellness. Veja onde trava o caminho de quem se interessa até virar aluno, e por onde começar a arrumar.',
     linha: '7 perguntas · 3 minutos',
     botao: 'Começar o diagnóstico',
   },
 
   /* prévia do link (Instagram, WhatsApp). A imagem é gerada deste título: node prova/og.mjs */
   compartilhamento: {
-    titulo: 'Veja em 3 minutos onde a sua empresa está deixando dinheiro na mesa.',
-    descricao: 'Não é sobre marketing, não é sobre vendas, é sobre receita. Responda e descubra onde ela trava.',
+    titulo: 'Seu negócio está crescendo, ou só repondo quem sai?',
+    descricao: 'Para empresas de wellness. Veja onde trava o caminho de quem se interessa até virar aluno, e por onde começar a arrumar.',
     tituloAba: 'Diagnóstico de receita · Audácia',
   },
 
   blocos: {
     atracao: { nome: 'Atração', pergunta: 'Chega gente?' },
-    conversao: { nome: 'Conversão', pergunta: 'Quem chega vira cliente?' },
+    conversao: { nome: 'Conversão', pergunta: 'Quem chega vira aluno?' },
     controle: { nome: 'Controle', pergunta: 'Você sabe os números?' },
   },
 
@@ -44,7 +44,7 @@ export default {
   perguntas: {
     P1: {
       bloco: 'atracao',
-      titulo: 'Hoje, de onde vem a maioria dos seus clientes?',
+      titulo: 'Hoje, de onde vem a maioria dos seus alunos novos?',
       maximo: { atracao: 1 },
       opcoes: [
         { id: 'indicacao', texto: 'Indicação e boca a boca', pontos: { atracao: 0 }, vai: 'A1' },
@@ -55,7 +55,7 @@ export default {
     },
     A1: {
       bloco: 'atracao',
-      titulo: 'Se as indicações parassem no mês que vem, de onde viriam os próximos clientes?',
+      titulo: 'Se as indicações parassem no mês que vem, de onde viriam os próximos alunos?',
       maximo: { atracao: 2 },
       opcoes: [
         { id: 'nao_sei', texto: 'Não sei', pontos: { atracao: 0 }, naoSei: true },
@@ -69,8 +69,8 @@ export default {
       maximo: { atracao: 2, conversao: 2 },
       opcoes: [
         { id: 'pouca_gente', texto: 'Chega pouca gente', pontos: { atracao: 0 } },
-        { id: 'pouca_compra', texto: 'Chega gente, mas pouca compra', pontos: { atracao: 2, conversao: 0 } },
-        { id: 'vende_bem', texto: 'Chega e vende bem', pontos: { atracao: 2 } },
+        { id: 'pouca_compra', texto: 'Chega gente, mas pouca vira aluno', pontos: { atracao: 2, conversao: 0 } },
+        { id: 'vende_bem', texto: 'Chega e vira aluno', pontos: { atracao: 2 } },
         { id: 'nao_sei', texto: 'Não sei dizer', pontos: { atracao: 0 }, naoSei: true },
       ],
     },
@@ -80,24 +80,24 @@ export default {
       maximo: { atracao: 2, conversao: 2 },
       opcoes: [
         { id: 'caro', texto: 'Chega gente, mas sai caro', pontos: { atracao: 1 } },
-        { id: 'nao_compra', texto: 'Chega gente, mas não compra', pontos: { atracao: 2, conversao: 0 } },
-        { id: 'se_paga', texto: 'Traz cliente e se paga', pontos: { atracao: 2 } },
+        { id: 'nao_compra', texto: 'Chega gente, mas não vira aluno', pontos: { atracao: 2, conversao: 0 } },
+        { id: 'se_paga', texto: 'Traz aluno e se paga', pontos: { atracao: 2 } },
         { id: 'nao_sei', texto: 'Não sei se se paga', pontos: { atracao: 0 }, naoSei: true },
       ],
     },
     P2: {
       bloco: 'conversao',
-      titulo: 'Quando alguém se interessa, quem atende?',
+      titulo: 'Quando alguém pede informação ou quer marcar uma aula, quem atende?',
       maximo: { conversao: 2 },
       opcoes: [
         { id: 'eu', texto: 'Eu mesmo, no WhatsApp, quando dá', pontos: { conversao: 0 }, vai: 'B1' },
-        { id: 'equipe', texto: 'Alguém da equipe, no WhatsApp, sem processo definido', pontos: { conversao: 1 }, vai: 'B1' },
+        { id: 'equipe', texto: 'Alguém da recepção ou da equipe, sem processo definido', pontos: { conversao: 1 }, vai: 'B1' },
         { id: 'crm', texto: 'Uma equipe com processo e CRM', pontos: { conversao: 2 }, vai: 'B2', crm: true },
       ],
     },
     B1: {
       bloco: 'conversao',
-      titulo: 'Quem pergunta preço e não compra na hora, alguém volta a falar com ele?',
+      titulo: 'Quem pergunta preço ou faz uma aula e não fecha na hora, alguém volta a falar com ele?',
       maximo: { conversao: 2 },
       opcoes: [
         { id: 'quase_nunca', texto: 'Quase nunca', pontos: { conversao: 0 } },
@@ -107,7 +107,7 @@ export default {
     },
     B2: {
       bloco: 'conversao',
-      titulo: 'De cada 10 interessados, quantos viram cliente?',
+      titulo: 'De cada 10 interessados, quantos viram aluno?',
       maximo: { conversao: 2 },
       opcoes: [
         { id: '0_1', texto: '0 a 1', pontos: { conversao: 0 } },
@@ -120,7 +120,7 @@ export default {
     /* as cinco versões da pergunta extra: o motor escolhe uma (regra em `extra`, abaixo) */
     X_ATRACAO: {
       bloco: 'atracao',
-      titulo: 'Quantas pessoas novas te procuram por mês?',
+      titulo: 'Quantas pessoas novas procuram o seu negócio por mês?',
       maximo: { atracao: 2 },
       opcoes: [
         { id: 'menos_10', texto: 'Menos de 10', pontos: { atracao: 0 } },
@@ -152,7 +152,7 @@ export default {
     },
     X_CONVERSAO_COM_CRM: {
       bloco: 'conversao',
-      titulo: 'Quem não comprou fica guardado pra receber contato depois?',
+      titulo: 'Quem não fechou fica guardado pra receber contato depois?',
       maximo: { conversao: 2 },
       opcoes: [
         { id: 'organizado', texto: 'Sim, organizado', pontos: { conversao: 2 } },
@@ -162,7 +162,7 @@ export default {
     },
     X_CONTROLE: {
       bloco: 'controle',
-      titulo: 'Você acompanha quanto entrou de receita por canal, todo mês?',
+      titulo: 'Você sabe, todo mês, de qual canal veio cada aluno novo?',
       maximo: { controle: 2 },
       opcoes: [
         { id: 'sim', texto: 'Sim', pontos: { controle: 2 } },
@@ -173,7 +173,7 @@ export default {
 
     P3: {
       bloco: 'controle',
-      titulo: 'Você sabe quanto vale um cliente, somando tudo o que ele paga ao longo do tempo?',
+      titulo: 'Você sabe quanto tempo, em média, um aluno fica com você?',
       maximo: { controle: 2 },
       opcoes: [
         { id: 'sei', texto: 'Sei o número', pontos: { controle: 2 } },
@@ -186,8 +186,8 @@ export default {
       titulo: 'Se a procura dobrasse no mês que vem, o que aconteceria?',
       maximo: { controle: 2 },
       opcoes: [
-        { id: 'dobro', texto: 'Venderíamos o dobro', pontos: { controle: 2 } },
-        { id: 'perderia', texto: 'Venderíamos mais, mas perderíamos muita gente no caminho', pontos: { controle: 1 } },
+        { id: 'dobro', texto: 'Matricularíamos o dobro', pontos: { controle: 2 } },
+        { id: 'perderia', texto: 'Matricularíamos mais, mas perderíamos muita gente no caminho', pontos: { controle: 1 } },
         { id: 'nao_daria', texto: 'Não daríamos conta', pontos: { controle: 0 } },
       ],
     },
@@ -219,22 +219,24 @@ export default {
 
   /* ── captura ──────────────────────────────────────────────────────────────────────────────── */
   captura: {
-    titulo: 'Seu diagnóstico está pronto. Pra onde a gente manda?',
+    titulo: 'Seu diagnóstico está pronto. De quem é esse negócio?',
     campos: {
       nome: 'Nome',
       whatsapp: 'WhatsApp',
-      empresa: 'Empresa ou @ do Instagram',
+      empresa: 'Nome do negócio ou @ do Instagram',
       segmento: 'Segmento',
       segmentoOutro: 'Qual?',
       faturamento: 'Faturamento anual',
     },
     segmentos: [
-      'Academia ou box',
-      'Estúdio (pilates, funcional, dança)',
-      'Clínica ou saúde',
-      'Assessoria ou escola de esporte',
-      'Loja ou e-commerce',
-      'Serviço para empresas',
+      'Academia',
+      'Box ou CrossFit',
+      'Estúdio (pilates, funcional, yoga)',
+      'Luta, dança ou natação',
+      'Clínica esportiva ou fisioterapia',
+      'Arena, quadra ou clube',
+      'Assessoria esportiva',
+      'Personal trainer',
       'Outro',
     ],
     faturamentos: [
@@ -244,7 +246,7 @@ export default {
       'Acima de R$ 3 milhões',
       'Prefiro não dizer',
     ],
-    autorizacao: 'Autorizo a Audácia a usar esses dados para me enviar o diagnóstico e entrar em contato.',
+    autorizacao: 'Autorizo a Audácia a usar esses dados para falar comigo sobre o diagnóstico.',
     botao: 'Ver meu diagnóstico',
     erro: 'Não deu pra enviar agora. Confira a conexão e tente de novo.',
   },
@@ -253,25 +255,46 @@ export default {
   resultado: {
     rotuloNotas: 'Sua receita em três partes',
     rotuloFuro: 'Onde ela mais trava',
+    rotuloPassos: 'Por onde começar',
     diagnosticos: {
       atracao: {
         titulo: 'Sua receita depende da sorte.',
-        texto: 'Os clientes chegam, mas não por uma máquina sua, e no mês que a indicação secar a receita cai junto.',
+        texto: 'Os alunos chegam, mas não por um caminho seu, e no mês que a indicação secar a receita cai junto.',
+        passos: [
+          'Pergunte a cada aluno novo deste mês como ele chegou até você, e anote.',
+          'Escolha um canal que dependa de você, além da indicação, e diga nele pra quem é o seu negócio, não só o preço.',
+          'Antes de pagar anúncio, decida pra onde vai quem clicar: uma aula, uma visita, uma conversa.',
+        ],
         video: null, // [FALTA INSUMO: vídeo do Patrick sobre Atração] link do YouTube, Vimeo ou .mp4
       },
       conversao: {
         titulo: 'Chega gente, e o dinheiro vaza no meio.',
-        texto: 'O interesse existe, mas quem não compra na hora some, e ninguém volta pra buscar.',
+        texto: 'O interesse existe, mas quem não fecha na hora some, e ninguém volta pra buscar.',
+        passos: [
+          'Faça a lista de quem pediu preço ou fez aula nos últimos 30 dias e não virou aluno. Esse é o dinheiro que já bateu na sua porta.',
+          'Decida quem responde, em quanto tempo e em que dia volta a chamar quem não fechou. Escrito, não de cabeça.',
+          'Conte toda semana quantos interessados viraram aluno. Sem esse número, você não sabe se melhorou.',
+        ],
         video: null, // [FALTA INSUMO: vídeo do Patrick sobre Conversão]
       },
       controle: {
         titulo: 'Você está dirigindo no escuro.',
-        texto: 'Sem os números, não dá pra saber onde investir nem o que está dando certo.',
+        texto: 'Sem os números, não dá pra saber se o seu negócio está crescendo ou só repondo quem sai.',
+        passos: [
+          'Anote todo mês quantos alunos entraram e quantos saíram. Se a conta empata, você não cresce, repõe.',
+          'Marque de onde veio cada aluno novo: indicação, Instagram, anúncio, passou na porta.',
+          'Descubra quanto tempo, em média, um aluno fica com você. É esse número que diz quanto vale cada matrícula.',
+        ],
         video: null, // [FALTA INSUMO: vídeo do Patrick sobre Controle]
       },
       maquina: {
         titulo: 'Sua máquina roda.',
         texto: 'O próximo passo é crescer sem quebrar.',
+        passos: [
+          'Pense na procura dobrando no mês que vem: quem atende, em quanto tempo, com que processo. Onde travar primeiro é onde você mexe agora.',
+          'Olhe pra quem sai: em que mês, por quê, e o que o seu negócio fez antes de ele ir embora.',
+          'Antes de aumentar a verba, confira o posicionamento. Mais anúncio com a mensagem errada traz mais gente errada.',
+        ],
         video: null, // [FALTA INSUMO: vídeo do Patrick para quem tirou acima de 7 nos três]
       },
     },

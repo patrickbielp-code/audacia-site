@@ -7,8 +7,8 @@
  * quiz_iniciado (tocou em Começar), quiz_resposta (cada pergunta: mostra onde as pessoas param),
  * quiz_concluido (respondeu a P4) e lead_capturado (gravado pelo SERVIDOR, quando o lead entra).
  */
-import cfg from './quiz.config.js?v=fbb54f86';
-import { sequencia, calcular, notaTexto, BLOCOS, TOTAL_PERGUNTAS } from './logica/motor.js?v=fbb54f86';
+import cfg from './quiz.config.js?v=a554ad07';
+import { sequencia, calcular, notaTexto, BLOCOS, TOTAL_PERGUNTAS } from './logica/motor.js?v=a554ad07';
 
 const RT = window.QUIZ_RUNTIME || {};
 const TRACKER = window.AUDACIA_TRACKER || {};
@@ -75,10 +75,26 @@ function mostrar(tela, foco) {
   if (foco) requestAnimationFrame(() => $(foco)?.focus({ preventScroll: true }));
 }
 
+/* 27/10: a vírgula da Plus Jakarta a 800 fica solta da palavra como o ponto; vai apertada */
+function comVirgula(texto) {
+  const partes = String(texto).split(/(?<=\p{L}),/u);
+  const nos = [];
+  partes.forEach((t, i) => {
+    nos.push(t);
+    if (i < partes.length - 1) {
+      const s = document.createElement('span');
+      s.className = 'pontuacao';
+      s.textContent = ',';
+      nos.push(s);
+    }
+  });
+  return nos;
+}
+
 function textoComAcento(el, texto, acento) {
   el.textContent = '';
   const i = acento ? texto.indexOf(acento) : -1;
-  if (i < 0) { el.textContent = texto; return; }
+  if (i < 0) { el.append(...comVirgula(texto)); return; }
   const s = document.createElement('span');
   s.className = 'acento';
   s.textContent = acento;
@@ -88,8 +104,8 @@ function textoComAcento(el, texto, acento) {
     const q = document.createElement('span');
     q.className = 'pontuacao';
     q.textContent = pont[0];
-    el.append(texto.slice(0, i), s, q, resto.slice(1));
-  } else el.append(texto.slice(0, i), s, resto);
+    el.append(...comVirgula(texto.slice(0, i)), s, q, resto.slice(1));
+  } else el.append(...comVirgula(texto.slice(0, i)), s, resto);
 }
 
 /* título com o ponto final apertado (o ponto da Plus Jakarta a 800 fica solto da palavra) */
@@ -327,8 +343,24 @@ function irResultado() {
   const d = R.diagnosticos[r.diagnostico];
   titulo($('diag-titulo'), d.titulo);
   $('diag-texto').textContent = d.texto;
+  montarPassos(d.passos, R.rotuloPassos);
   montarVideo(d.video, R.videoReservado);
   mostrar('resultado', 'diag-titulo');
+}
+
+/* 27/10: o que o dono faz sozinho depois do diagnóstico (sem passos no config, o bloco some) */
+function montarPassos(passos, rotulo) {
+  const box = $('passos');
+  const lista = $('passos-lista');
+  lista.textContent = '';
+  box.hidden = !(passos && passos.length);
+  if (box.hidden) return;
+  $('r-rotulo-passos').textContent = rotulo || '';
+  for (const p of passos) {
+    const li = document.createElement('li');
+    li.textContent = p;
+    lista.append(li);
+  }
 }
 
 function montarVideo(url, reservado) {
