@@ -1371,3 +1371,6 @@ html { scroll-behavior: smooth; }
 /* rodada 2 (13/10): nos três pontos, o texto embaixo do nome fica fino; só o nome pesa */
 .grade--elos .texto-celula { font-weight: var(--peso-regular, 400); }
 .grade--elos .texto-celula .nome { font-weight: var(--peso-negrito); margin-bottom: 0.35em; }
+
+/* 27/10: vírgula e ponto dos títulos grandes colados na palavra (a 800 eles ficam soltos) */
+.pontuacao { margin-left: -0.1em; }
